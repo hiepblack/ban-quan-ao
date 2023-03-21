@@ -1,0 +1,16 @@
+.be__header-box{
+    font-size: var(--smaller-font-size);
+    font-weight:var(--font-normal);
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    padding:.5rem 0;
+    color: white;
+}
+.be__header{
+    background-color:var(--title-color);
+}
+.be__header-box span i{
+    font-size: var(--normal-font-size);
+    padding: 0 .25rem;
+}
