@@ -9,6 +9,7 @@
 }
 .be__header{
     background-color:var(--title-color);
+    width: 100vw;
 }
 .be__header-box span i{
     font-size: var(--normal-font-size);
