@@ -1,53 +1,101 @@
 import React, { useState } from "react";
 import "./header.css";
+import { Link } from "react-router-dom";
 
-
+const nav_Menu = [
+  {
+    name: "Trang Chủ",
+    icon: "uil uil-estate nav__icon",
+  },
+  {
+    name: "Bộ Sưu Tập",
+    icon: "uil uil-chart-pie-alt nav__icon",
+  },
+  {
+    name: " Blog",
+    icon: "uil uil-blogger-alt nav__icon",
+  },
+  {
+    name: "Giới Thiêu",
+    icon: "uil uil-store nav__icon",
+  },
+  {
+    name: "Liên Lạc",
+    icon: "uil uil-calling nav__icon",
+  },
+];
 const Header = () => {
-
+  const [toggle, setToggle] = useState(false);
+  const [toggle__cart, setToggle_Cart] = useState(false);
+  /* ======Change Background header======= */
+  window.addEventListener("scroll", function () {
+    const header = document.querySelector(".header");
+    if (this.scrollY >= 80) {
+      header.classList.add("scroll-header");
+    } else {
+      header.classList.remove("scroll-header");
+    }
+  });
   return (
     <header className="header">
       <nav className="nav container">
-        <a href="index.html" className="nav__logo">
+        <Link to="#" className="nav__logo">
           HaHiep
-        </a>
+        </Link>
 
-        <div className="nav__menu">
+        <div className={toggle ? "nav__menu show-menu" : "nav__menu"}>
           <ul className="nav__list grid">
-            <li className="nav__item">
-              <a href="#home" className="nav__link">
-                <i className="uil uil-estate nav__icon"></i> Trang Chủ
-              </a>
-            </li>
-            <li className="nav__item">
-              <a href="#home" className="nav__link">
-                <i className="uil uil-estate nav__icon"></i> Bộ Sưu Tập
-              </a>
-            </li>
-            <li className="nav__item">
-              <a href="#home" className="nav__link">
-                <i className="uil uil-estate nav__icon"></i> Blog
-              </a>
-            </li>
-            <li className="nav__item">
-              <a href="#home" className="nav__link">
-                <i className="uil uil-estate nav__icon"></i> Giới Thiêu
-              </a>
-            </li>
-            <li className="nav__item">
-              <a href="#home" className="nav__link">
-                <i className="uil uil-estate nav__icon"></i> Liên Lạc
-              </a>
-            </li>
+            {nav_Menu.map((item) => {
+              return (
+                <li className="nav__item">
+                  <Link to="#home" className="nav__link">
+                    <i className={item.icon}></i> {item.name}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
-          <i class="uil uil-times nav__close"></i>
+          <i
+            class="uil uil-times nav__close"
+            onClick={() => {
+              setToggle(!toggle);
+            }}
+          ></i>
+        </div>
+        <div className="nav__right">
+          <i class="uil uil-search"></i>
+          <Link to="#">
+            <i class="uil uil-user"></i>
+          </Link>
+          <i
+            class="uil uil-shopping-bag"
+            onClick={() => {
+              setToggle_Cart(!toggle__cart);
+            }}
+          >
+            {" "}
+          </i>
         </div>
 
-        <div className="nav__right">
-            <i class="uil uil-search"></i>
-            <i class="uil uil-user"></i>
-            <i class="uil uil-shopping-bag"></i>
+        <div className="nav__menu__icon">
+          <i
+            class="uil uil-align-justify nav__icon"
+            onClick={() => {
+              setToggle(!toggle);
+            }}
+          ></i>
         </div>
-        
+        <div className={toggle__cart ? "nav__shop show_nav_shop" : "nav__shop"}>
+          <div className="nav__shop__header">
+            <p>Shopping-Cart</p>
+            <i
+              class="uil uil-times"
+              onClick={() => {
+                setToggle_Cart(!toggle__cart);
+              }}
+            ></i>
+          </div>
+        </div>
       </nav>
     </header>
   );
