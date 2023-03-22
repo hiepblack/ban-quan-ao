@@ -6,6 +6,7 @@ const Footer = () => {
         <div className='infooter'>
             <div>
                 <p className="text-footer">Số ĐKKD 011111111</p>
+                
                 <p className="text-footer">Địa chỉ: Phòng 23, tầng 10, Tòa nhà DPCH</p>
                 <p className="text-footer">số 343 đường Nguyễn Văn Cừ, P. Gia Thụy, Q. Long Biên, Hà Nội</p>
                 <p className="text-footer">Chăm sóc khách hàng: 0243.9388512</p>
