@@ -1,7 +1,7 @@
 import React from "react";
 import "./hot_collect.css";
 import Title from "../title/Title";
-import CardProduct from "../card/CardProduct";
+import CardProducts from "../cardProduct/CardProducts";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -39,19 +39,19 @@ const Hot_Collect = () => {
         modules={[Pagination, Autoplay, Navigation]}
       >
         <SwiperSlide>
-          <CardProduct />
+          <CardProducts />
         </SwiperSlide>
         <SwiperSlide>
-          <CardProduct />
+          <CardProducts />
         </SwiperSlide>
         <SwiperSlide>
-          <CardProduct />
+          <CardProducts />
         </SwiperSlide>
         <SwiperSlide>
-          <CardProduct />
+          <CardProducts />
         </SwiperSlide>
         <SwiperSlide>
-          <CardProduct />
+          <CardProducts />
         </SwiperSlide>
       </Swiper>
     </section>
