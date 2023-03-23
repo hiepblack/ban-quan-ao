@@ -62,6 +62,7 @@ const Header = () => {
             }}
           ></i>
         </div>
+
         <div className="nav__right">
           <i class="uil uil-search"></i>
           <Link to="#">
@@ -73,7 +74,6 @@ const Header = () => {
               setToggle_Cart(!toggle__cart);
             }}
           >
-            {" "}
           </i>
         </div>
 
@@ -85,7 +85,7 @@ const Header = () => {
             }}
           ></i>
         </div>
-        <div className={toggle__cart ? "nav__shop show_nav_shop" : "nav__shop"}>
+        <div className={toggle__cart ? "nav__shop show__nav__shop":"nav__shop"}>
           <div className="nav__shop__header">
             <p>Shopping-Cart</p>
             <i
@@ -95,6 +95,8 @@ const Header = () => {
               }}
             ></i>
           </div>
+          san pham 1
+
         </div>
       </nav>
     </header>
