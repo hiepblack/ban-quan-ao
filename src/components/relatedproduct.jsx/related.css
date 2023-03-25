@@ -1,45 +1,69 @@
-.related{
-    padding-top: 10px;
-    margin-top: 50px;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
+.related {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
-.card-related{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-gap: 10px;
+.description {
+  padding: 1rem;
 }
-.img-related img{
-    width: 300px;
-    height:450px;
-    object-fit: cover;
-}.box-card{
-    text-align: center;
+.nav__item_list {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 0.5rem;
 }
-.product_buy{
-  background-color:  rgba(135, 131, 131, 0.5);
+.nav__item_list p {
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+}
+.related__products{
+  width: 100%;
+  margin: 1rem auto;
+  padding: 0.5rem;
+}
+.related__products p{
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+.card-related {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+.img-related img {
+  width: 300px;
+  height: 450px;
+  object-fit: cover;
+}
+.box-card {
+  text-align: center;
+}
+.product_buy {
+  background-color: rgba(135, 131, 131, 0.5);
   position: absolute;
-
 }
 .img-related img:last-child {
-    display: none;    
-  }
-  .img-related:hover img:last-child {
-    display: block;  
-  }
-  .img-related:hover img:first-child {
-    display: none; 
-   
-  }
-.nav__item_list button{
-    background-color: white;
-    margin: 0 40px;
+  display: none;
 }
-  @media screen and (max-width: 768px) {
-    .related{
-        grid-template-columns: repeat(1 , 1fr);
-    }
-    .card-related{
-        grid-template-columns: repeat(1 , 1fr);
-    }
+.img-related:hover img:last-child {
+  display: block;
+}
+.img-related:hover img:first-child {
+  display: none;
+}
+.nav__item_list button {
+  background-color: white;
+  margin: 0 40px;
+}
+@media screen and (max-width: 768px) {
+  .related {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .card-related {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

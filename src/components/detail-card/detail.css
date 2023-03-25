@@ -1,86 +1,92 @@
-.container-detail{
-    margin-top: 80px;
-    display: grid;
-    grid-template-columns: repeat(2 , 1fr);
+.container-detail {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2.5rem;
 }
-.thumbnail img{
-    display: block;
-    width: 80px;
-    padding: 10px 10px;
+.image-product {
+  display: flex;
+  width: 100%;
 }
-.large-image{
-    padding-top: 10px;
+.thumbnail {
+  width: 15%;
+  display: block;
 }
-.image-product{
-    display:flex;
-    flex-direction: row;
+.thumbnail img {
+  width: 100%;
+  height: 80px;
+  padding: 0 0.5rem;
+  object-fit: cover;
 }
-.input_color{
-    margin: 10px auto;
+
+.input_color {
+  margin: 0.5rem auto;
 }
 .btn-size {
-    margin: 20px 0;
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, 4rem);
+  width: 100%;
+  height: 2.5rem;
+  column-gap: 1rem;
 }
-.btn-size button{
-    border: solid 1px black;
-    background-color: white;
-    padding: 10px 10px;
+.btn-size .btn {
+  border: 1px solid #111;
+  background-color: var(--body-color);
 }
-.btn_first{
-    margin-right: 20px;
+.btn:hover {
+  background-color: var(--container-color);
 }
-.btn_{
-    margin: 0 20px;
+.quantity input {
+  margin-top: 1rem;
+  width: 5rem;
+  padding: 0.5rem 0.5rem;
+  text-align: center;
 }
-.detail-product{
-    margin-left: 50px;
+.btn-sumbit button {
+  margin-top: 1rem;
+  border: 1px solid #111;
+  background-color: white;
+  padding: 0.75rem 3rem;
 }
-.quantity input{
-    margin-top: 20px;
-    width: 100px;
-    padding: 10px 10px;
+.content-deltail p {
+  padding: 1rem 0;
 }
-.btn-sumbit button{
-    margin-top: 50px;
-    border: solid 1px;
-    background-color: white;
-    padding: 10px 50px;
-}
-.content-deltail p{
-    padding: 20px 0;
-}
-.price{
-    color: red;
-    font-size: 18px;
+.price {
+  color: red;
+  font-size: var(--normal-font-size);
 }
 .up {
-    background: none;
-   
-  
-   
-    --hover: #80857d;
-  }
-  .up:hover,
-  .up:focus {
-    box-shadow: inset 0 -3.25em 0 0 var(--hover);
-  }
-  .up {
-    color: var(--color);
-    transition: 0.25s;
-  }
-  .up:hover, .up:focus {
- 
-    color: #fff;
-  }
+  background: none;
+  --hover: #ccc;
+}
+.up:hover,
+.up:focus {
+  box-shadow: inset 0 -3.25em 0 0 var(--hover);
+}
+.up {
+  color: var(--color);
+  transition: 0.25s;
+}
+.up:hover,
+.up:focus {
+  color: #fff;
+}
 @media screen and (max-width: 768px) {
-    .container-detail{
-        grid-template-columns: repeat(1 , 1fr);
-    }
-    .image-product{
-        flex-direction:column;
-    }
-    .thumbnail img{
-        display: none;
-       
-    }
+  .container-detail {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .image-product {
+    flex-direction: column-reverse;
+  }
+  .thumbnail{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 0.5rem;
+  }
+  .thumbnail img {
+    padding: 0.5rem 0;
+    height: 100px;
+  }
 }
