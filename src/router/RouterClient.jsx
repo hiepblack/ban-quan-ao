@@ -4,6 +4,7 @@ import Home from "../Pages/Home";
 import Products from "../Pages/Products";
 import Blog from "../Pages/Blog";
 import Contact from "../Pages/Contact";
+import ProductdetailPage from "../Pages/Product-detail";
 
 const RouterClient = () => {
   return (
@@ -12,6 +13,7 @@ const RouterClient = () => {
       <Route path="/product" element={<Products />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/Productdetail" element={<ProductdetailPage />} />
     </Routes>
   );
 };

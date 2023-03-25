@@ -1,0 +1,16 @@
+.descrtion_list li{
+    
+    list-style: square;
+    padding: 5px 5px;
+    font-size: var(   --small-font-size);
+}
+.title_desc{
+    
+}
+.descrtion_list{
+  padding-left: 1rem;
+}
+.desc p{
+    font-size: var(   --small-font-size);
+    margin: 10px auto;
+}
