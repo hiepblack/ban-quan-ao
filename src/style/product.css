@@ -3,6 +3,13 @@
   column-gap: 1rem;
   padding: 1rem;
 }
+.filter__container {
+  position: relative;
+}
+.filter__container__box {
+  position: sticky;
+  top: 6rem;
+}
 .filter__container h2 {
   border-bottom: 1px solid #ccc;
 }
@@ -61,16 +68,15 @@
 /* ======Breakpoints======= */
 /* For  medium devices */
 @media screen and (max-width: 768px) {
-  .product__container{
+  .product__container {
     grid-template-columns: max-content;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
   }
-  .filter__container{
+  .filter__container {
     display: none;
   }
 }
 @media screen and (max-width: 576px) {
 }
 @media screen and (max-width: 350px) {
-  
 }

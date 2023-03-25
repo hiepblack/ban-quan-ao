@@ -7,7 +7,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ccc;
 }
 .listproduct__header__filter {
   display: flex;
@@ -33,7 +32,7 @@
 .listproduct__body {
   grid-template-columns: repeat(3, 1fr);
   column-gap: 1rem;
-  padding: 0.75rem 0;
+  padding: 1rem 1rem;
 }
 
 /* ======Breakpoints======= */
