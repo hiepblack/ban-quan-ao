@@ -1,0 +1,76 @@
+.product__container {
+  grid-template-columns: 1fr 3fr;
+  column-gap: 1rem;
+  padding: 1rem;
+}
+.filter__container h2 {
+  border-bottom: 1px solid #ccc;
+}
+.filter__size {
+  width: 100%;
+  margin-top: 1rem;
+}
+.filter__size__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #111;
+  padding: 0.5rem 0;
+}
+.filter__size__header span i {
+  font-size: var(--h2-font-size);
+}
+.rotateX {
+  transform: rotate(0);
+  transition: 0.3s;
+}
+.rotateY {
+  transform: rotate(180deg);
+  transition: 0.3s;
+}
+.filter__size__header span {
+  cursor: pointer;
+}
+.filter__size__body {
+  display: block;
+  transition: 0.3s ease-out;
+  width: 100%;
+  padding-top: 1rem;
+  height: 0;
+  overflow: hidden;
+}
+.show_body {
+  height: 11rem !important;
+}
+.filter__size__body ul {
+  width: 100%;
+}
+.filter__size__body ul li {
+  padding: 0.5rem 0.25rem;
+}
+.filter__size__body ul li a {
+  display: flex;
+  justify-content: flex-start;
+}
+.filter__size__body input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+}
+/* ======Breakpoints======= */
+/* For  medium devices */
+@media screen and (max-width: 768px) {
+  .product__container{
+    grid-template-columns: max-content;
+    padding: .5rem 0;
+  }
+  .filter__container{
+    display: none;
+  }
+}
+@media screen and (max-width: 576px) {
+}
+@media screen and (max-width: 350px) {
+  
+}

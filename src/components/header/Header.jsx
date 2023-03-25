@@ -6,22 +6,27 @@ const nav_Menu = [
   {
     name: "Trang Chủ",
     icon: "uil uil-estate nav__icon",
+    path: "/",
   },
   {
     name: "Bộ Sưu Tập",
     icon: "uil uil-chart-pie-alt nav__icon",
+    path: "/product",
   },
   {
     name: " Blog",
     icon: "uil uil-blogger-alt nav__icon",
+    path: "/blog",
   },
   {
     name: "Giới Thiêu",
     icon: "uil uil-store nav__icon",
+    path: "/",
   },
   {
     name: "Liên Lạc",
     icon: "uil uil-calling nav__icon",
+    path: "/contact",
   },
 ];
 const Header = () => {
@@ -48,7 +53,7 @@ const Header = () => {
             {nav_Menu.map((item) => {
               return (
                 <li className="nav__item">
-                  <Link to="#home" className="nav__link">
+                  <Link to={item.path} className="nav__link">
                     <i className={item.icon}></i> {item.name}
                   </Link>
                 </li>
@@ -62,6 +67,7 @@ const Header = () => {
             }}
           ></i>
         </div>
+
         <div className="nav__right">
           <i class="uil uil-search"></i>
           <Link to="#">
@@ -72,9 +78,7 @@ const Header = () => {
             onClick={() => {
               setToggle_Cart(!toggle__cart);
             }}
-          >
-            {" "}
-          </i>
+          ></i>
         </div>
 
         <div className="nav__menu__icon">
@@ -85,7 +89,9 @@ const Header = () => {
             }}
           ></i>
         </div>
-        <div className={toggle__cart ? "nav__shop show_nav_shop" : "nav__shop"}>
+        <div
+          className={toggle__cart ? "nav__shop show__nav__shop" : "nav__shop"}
+        >
           <div className="nav__shop__header">
             <p>Shopping-Cart</p>
             <i
@@ -95,6 +101,7 @@ const Header = () => {
               }}
             ></i>
           </div>
+          san pham 1
         </div>
       </nav>
     </header>
