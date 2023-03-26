@@ -2,28 +2,33 @@ import React from "react";
 import "./cardproducts.css";
 import { Link } from "react-router-dom";
 
-const CardProducts = () => {
+const CardProducts = ({ product,handleDetail }) => {
+  
   return (
-    <div class="product-card">
-      <div class="badge">Hot</div>
-      <div class="product-tumb">
-        <img src="https://i.imgur.com/xdbHo4E.png" alt="" />
-      </div>
-      <div class="product-details">
-        <span class="product-catagory">Women,bag</span>
-        <h4>
-          <Link to="">Women leather bag</Link>
-        </h4>
-        <div class="product-bottom-details">
-          <div class="product-price">
-            <small>$96.00</small>$230.99
+    <div className="product-card">
+      <div className="product__img">
+          <img src={product?.image.mainImage} alt="" />
+          <div className="product__img__btn">
+            <button onClick={()=>{handleDetail(product.id)}}>Xem Nhanh</button>
           </div>
-          <div class="product-links">
+      </div>
+      <div className="product-details">
+        <span className="product-catagory">{product?.category}</span>
+        <h4>
+          <Link to={`/productdetail/${product?.id}`}>{product?.name}</Link>
+        </h4>
+        <div className="product-bottom-details">
+          <div className="product-links">
             <Link to="">
-              <i class="fa fa-heart"></i>
+              <i className="fa fa-heart"></i>
             </Link>
+          </div>
+          <div className="product-price">
+            <small>$96.00</small>${product?.price}
+          </div>
+          <div className="product-links">
             <Link to="">
-              <i class="fa fa-shopping-cart"></i>
+              <i className="fa fa-shopping-cart"></i>
             </Link>
           </div>
         </div>

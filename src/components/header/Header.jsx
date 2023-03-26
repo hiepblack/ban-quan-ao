@@ -92,16 +92,21 @@ const Header = () => {
         <div
           className={toggle__cart ? "nav__shop show__nav__shop" : "nav__shop"}
         >
-          <div className="nav__shop__header">
-            <p>Shopping-Cart</p>
-            <i
-              class="uil uil-times"
-              onClick={() => {
-                setToggle_Cart(!toggle__cart);
-              }}
-            ></i>
+          <div className="nav__shop__back"></div>
+          <div className="nav__shop__cart">
+            <div className="nav__shop__header">
+              <p>Shopping-Cart</p>
+              <i
+                class="uil uil-times"
+                onClick={() => {
+                  setToggle_Cart(!toggle__cart);
+                }}
+              ></i>
+            </div>
+            <div className="nav__shop__body">
+              sản phâm 1
+            </div>
           </div>
-          san pham 1
         </div>
       </nav>
     </header>

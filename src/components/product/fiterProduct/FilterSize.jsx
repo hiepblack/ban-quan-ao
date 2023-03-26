@@ -4,9 +4,9 @@ const FilterSize = () => {
   const [toggleSize, setToggleSize] = useState(true);
   return (
     <div className="filter__size">
-        <div className="filter__size__header">
-          <h3>Kích thước</h3>
-          <span className={toggleSize ? "rotateX" : "rotateY"} onClick={()=>setToggleSize(!toggleSize)}>
+        <div className="filter__size__header" onClick={()=>setToggleSize(!toggleSize)}>
+          <p>Kích thước</p>
+          <span className={toggleSize ? "rotateX" : "rotateY"} >
             <i class="uil uil-angle-down"></i>
           </span>
         </div>
