@@ -1,7 +1,7 @@
 import React from "react";
 import "./hot_collect.css";
 import Title from "../title/Title";
-import CardProducts from "../cardProduct/CardProducts";
+import CardCategory from "../cardCategory/CardCategory";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -33,25 +33,25 @@ const Hot_Collect = () => {
             slidesPerView: 1,
           },
           768: {
-            slidesPerView: 3,
+            slidesPerView: 4,
           },
         }}
         modules={[Pagination, Autoplay, Navigation]}
       >
         <SwiperSlide>
-          <CardProducts />
+          <CardCategory />
         </SwiperSlide>
         <SwiperSlide>
-          <CardProducts />
+          <CardCategory />
         </SwiperSlide>
         <SwiperSlide>
-          <CardProducts />
+          <CardCategory />
         </SwiperSlide>
         <SwiperSlide>
-          <CardProducts />
+          <CardCategory />
         </SwiperSlide>
         <SwiperSlide>
-          <CardProducts />
+          <CardCategory />
         </SwiperSlide>
       </Swiper>
     </section>

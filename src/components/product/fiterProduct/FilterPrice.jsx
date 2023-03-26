@@ -4,11 +4,11 @@ const FilterPrice = () => {
   const [togglePrice, setTogglePrice] = useState(true);
   return (
     <div className="filter__size">
-      <div className="filter__size__header">
-        <h3>Giá sản phẩm</h3>
+      <div className="filter__size__header"  onClick={() => setTogglePrice(!togglePrice)}>
+        <p>Giá sản phẩm</p>
         <span
           className={togglePrice ? "rotateX" : "rotateY"}
-          onClick={() => setTogglePrice(!togglePrice)}
+         
         >
           <i class="uil uil-angle-down"></i>
         </span>

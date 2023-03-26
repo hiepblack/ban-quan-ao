@@ -21,6 +21,14 @@
 
 .input_color {
   margin: 0.5rem auto;
+  display: flex;
+  align-items: center;
+}
+
+.input_color input{
+  height: 2rem;
+  width: 1.5rem;
+  margin:0 0.5rem;
 }
 .btn-size {
   margin: 1rem 0;

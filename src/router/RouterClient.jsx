@@ -13,7 +13,7 @@ const RouterClient = () => {
       <Route path="/product" element={<Products />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/Productdetail" element={<ProductdetailPage />} />
+      <Route path="/productdetail/:id" element={<ProductdetailPage />} />
     </Routes>
   );
 };

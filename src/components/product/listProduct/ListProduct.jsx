@@ -2,11 +2,11 @@ import React from "react";
 import "./listproduct.css";
 import CardProducts from "../../cardProduct/CardProducts";
 
-const ListProduct = () => {
+const ListProduct = ({ data,handleDetail }) => {
   return (
     <div className="listproduct">
       <div className="listproduct__header">
-        <p>10 sản phẩm</p>
+        <p>{data.length} sản phẩm</p>
         <div className="listproduct__header__filter">
           <p>Lọc</p>
           <select name="" id="" className="listproduct__header__select">
@@ -18,11 +18,13 @@ const ListProduct = () => {
         </div>
       </div>
       <div className="listproduct__body grid">
-      <CardProducts/>
-      <CardProducts/>
-      <CardProducts/>
-      <CardProducts/>
-      <CardProducts/>
+        {data.map((product, index) => {
+          return (
+            <React.Fragment key={index}>
+              <CardProducts product={product} handleDetail={handleDetail}/>
+            </React.Fragment>
+          );
+        })}
       </div>
     </div>
   );

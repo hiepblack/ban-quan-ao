@@ -8,7 +8,7 @@ const FiterProduct = () => {
   return (
     <div className="filter__container">
       <div className="filter__container__box">
-      <h2>BỘ LỌC SẢN PHẨM</h2>
+      <p>Bộ lọc sản phẩm</p>
       <FilterSize />
       <FilterPrice/>
       <FilterCategory />
