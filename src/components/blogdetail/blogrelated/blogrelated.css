@@ -1,0 +1,10 @@
+.blog_related{
+    display:  grid;
+    grid-template-columns: repeat(2,1fr);
+}
+@media screen and (max-with:764px){
+    .blog_related{
+        
+        grid-template-columns: repeat(1,1fr);
+    }
+}

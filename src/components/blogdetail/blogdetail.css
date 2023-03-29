@@ -1,0 +1,10 @@
+.content_blogdetail{
+    text-align: center;
+}
+.content_blogdetail h1{
+    padding: 2rem 0;
+}
+.content_blogdetail span{
+    padding: 2rem 0;
+    display: block;
+}
