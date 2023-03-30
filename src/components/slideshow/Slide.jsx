@@ -7,19 +7,19 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
-import { Pagination,Autoplay,EffectFade } from "swiper";
+import { Pagination, Autoplay, EffectFade } from "swiper";
 
 const Slide = () => {
+ 
   return (
-
     <section className="slide" id="home">
       <Swiper
         className="slide__container mySwiper"
         loop={true}
         autoplay={{
-            delay: 4000,
-            disableOnInteraction: false,
-          }}
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
         spaceBetween={24}
         pagination={{
           clickable: true,
@@ -34,11 +34,11 @@ const Slide = () => {
             spaceBetween: 48,
           },
         }}
-        modules={[Pagination,Autoplay,EffectFade]}
+        modules={[Pagination, Autoplay, EffectFade]}
       >
-        {dataSlide.map(({ id, image, title, description }) => {
+        {dataSlide.map(({ id, image, title, description, index }) => {
           return (
-            <SwiperSlide className="slide__container" key={id}>
+            <SwiperSlide className="slide__container" key={index}>
               <div className="slide__content-box">
                 <div className="slide__content-box-card">
                   <h1>{title}</h1>

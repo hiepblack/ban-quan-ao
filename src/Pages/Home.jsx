@@ -10,7 +10,7 @@ const Home = () => {
       <Slide />
       <Hot_Collect />
       <New_Product />
-      <News/>
+      <News />
     </>
   );
 };

@@ -31,6 +31,28 @@
   object-fit: cover;
   cursor: pointer;
 }
+.btn-size{
+  height: 2rem;
+}
+.input__size{
+  display:flex;
+  width: 5rem;
+  align-items: center;
+}
+.input__size input{
+ width: 1.5rem;
+ height: 2rem;
+}
+.quantity button {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid #ccc;
+}
+.quantity input {
+  height: 2.5rem;
+  border:none;
+  outline: none;
+}
 
 /* ======Breakpoints======= */
 /* For  medium devices */

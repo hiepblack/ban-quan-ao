@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: JSON.parse(localStorage.getItem("cart")) || [],
-  allPrice: JSON.parse(localStorage.getItem("cart")) || 0,
-  totalQuantity: JSON.parse(localStorage.getItem("cart")) || 0,
+  value: [],
+  allPrice: 0,
+  totalQuantity: 0,
 };
 
 export const cartSlice = createSlice({
@@ -26,8 +26,8 @@ export const cartSlice = createSlice({
         });
       } else {
         state.value.push(action.payload);
+        state.totalQuantity += 1;
       }
-      state.totalQuantity += 1;
       state.value.forEach((item) => (tongtien += item.totalPrice));
       state.allPrice = tongtien;
       localStorage.setItem("cart", JSON.stringify(state.value));
