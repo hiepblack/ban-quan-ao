@@ -6,7 +6,7 @@ import "../style/product.css";
 import { dataProduct } from "../data/data.js";
 import ProductDetailModel from "../components/model/ProductDetailModel";
 
-const Products = () => {
+const Products = ({setToggleCart}) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [productDetail, setProductDetail] = useState({});
@@ -28,7 +28,7 @@ const Products = () => {
         <div className="product__container grid">
           <FiterProduct />
           {loading ? (
-            <ListProduct data={data} handleDetail={handleDetail} />
+            <ListProduct data={data} handleDetail={handleDetail} setToggleCart={setToggleCart}/>
           ) : (
             ""
           )}

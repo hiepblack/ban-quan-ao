@@ -29,9 +29,9 @@ const nav_Menu = [
     path: "/contact",
   },
 ];
-const Header = () => {
+
+const Header = ({toggleCart,setToggleCart}) => {
   const [toggle, setToggle] = useState(false);
-  const [toggle__cart, setToggle_Cart] = useState(false);
   /* ======Change Background header======= */
   window.addEventListener("scroll", function () {
     const header = document.querySelector(".header");
@@ -67,46 +67,17 @@ const Header = () => {
             }}
           ></i>
         </div>
-
         <div className="nav__right">
           <i class="uil uil-search"></i>
-          <Link to="#">
+          <Link to="/signin">
             <i class="uil uil-user"></i>
           </Link>
-          <i
-            class="uil uil-shopping-bag"
-            onClick={() => {
-              setToggle_Cart(!toggle__cart);
-            }}
+          <i class="uil uil-shopping-bag"
+          onClick={()=>setToggleCart(true)}
           ></i>
         </div>
-
         <div className="nav__menu__icon">
-          <i
-            class="uil uil-align-justify nav__icon"
-            onClick={() => {
-              setToggle(!toggle);
-            }}
-          ></i>
-        </div>
-        <div
-          className={toggle__cart ? "nav__shop show__nav__shop" : "nav__shop"}
-        >
-          <div className="nav__shop__back"></div>
-          <div className="nav__shop__cart">
-            <div className="nav__shop__header">
-              <p>Shopping-Cart</p>
-              <i
-                class="uil uil-times"
-                onClick={() => {
-                  setToggle_Cart(!toggle__cart);
-                }}
-              ></i>
-            </div>
-            <div className="nav__shop__body">
-              sản phâm 1
-            </div>
-          </div>
+          <i class="uil uil-align-justify nav__icon"></i>
         </div>
       </nav>
     </header>

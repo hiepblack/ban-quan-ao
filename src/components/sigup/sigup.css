@@ -1,0 +1,49 @@
+.signup {
+  margin: 5rem auto;
+  display: grid;
+  place-items: center;
+}
+.form_login {
+  display: block;
+  background-color: transparent;
+  width: 35%;
+  text-align: center;
+  padding: 20px 0 0 0;
+  align-items: center;
+}
+.title_sigin {
+  padding-top: 2rem;
+}
+.create-account-wrap {
+  text-align: center;
+}
+.lable_input {
+  border: 1px solid #111;
+  width: 100%;
+  height: 3rem;
+  margin:1.5rem 0;
+  padding-left: .5rem;
+  background-color: var(--container-color);
+}
+.lable_input input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+.btn-sumbit {
+  width: 100%;
+  margin: 1rem auto;
+}
+.btn-sumbit button {
+  width: 100%;
+}
+/* For  medium devices */
+@media screen and (max-width: 768px) {
+  .form_login{
+    width: 90%;
+  }
+}
+@media screen and (max-width: 576px) {
+}

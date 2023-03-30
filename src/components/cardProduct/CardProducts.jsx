@@ -2,15 +2,29 @@ import React from "react";
 import "./cardproducts.css";
 import { Link } from "react-router-dom";
 
-const CardProducts = ({ product,handleDetail }) => {
-  
+const CardProducts = ({
+  product,
+  handleDetail,
+  setToggleCart,
+  handleAddtoCart,
+}) => {
+  const handleAdd = () => {
+    handleAddtoCart(product);
+    setToggleCart(true);
+  };
   return (
     <div className="product-card">
       <div className="product__img">
-          <img src={product?.image.mainImage} alt="" />
-          <div className="product__img__btn">
-            <button onClick={()=>{handleDetail(product.id)}}>Xem Nhanh</button>
-          </div>
+        <img src={product?.image.mainImage} alt="" />
+        <div className="product__img__btn">
+          <button
+            onClick={() => {
+              handleDetail(product.id);
+            }}
+          >
+            Xem Nhanh
+          </button>
+        </div>
       </div>
       <div className="product-details">
         <span className="product-catagory">{product?.category}</span>
@@ -28,7 +42,7 @@ const CardProducts = ({ product,handleDetail }) => {
           </div>
           <div className="product-links">
             <Link to="">
-              <i className="fa fa-shopping-cart"></i>
+              <i className="fa fa-shopping-cart" onClick={handleAdd}></i>
             </Link>
           </div>
         </div>

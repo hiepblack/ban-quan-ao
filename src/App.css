@@ -165,6 +165,9 @@ img {
   display: inline-flex;
   align-items: center;
 }
+.client{
+  position: relative;
+}
 
 /* ======Breakpoints======= */
 

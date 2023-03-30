@@ -1,8 +1,26 @@
 import React from "react";
 import "./listproduct.css";
 import CardProducts from "../../cardProduct/CardProducts";
+import {useDispatch } from 'react-redux';
+import {addCart} from "../../../redux/cartSlice"
 
-const ListProduct = ({ data,handleDetail }) => {
+const ListProduct = ({ data,handleDetail,setToggleCart }) => {
+  const dispatch = useDispatch();
+   const handleAddtoCart = (product)=>{
+      const newProduct = {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        quantity: 1,
+        image: product.image.mainImage,
+        size: 1,
+        color: 'black',
+        totalPrice: product.price * 1
+      }
+      const action  = addCart(newProduct)
+      dispatch(action);
+    }
+
   return (
     <div className="listproduct">
       <div className="listproduct__header">
@@ -21,7 +39,7 @@ const ListProduct = ({ data,handleDetail }) => {
         {data.map((product, index) => {
           return (
             <React.Fragment key={index}>
-              <CardProducts product={product} handleDetail={handleDetail}/>
+              <CardProducts product={product} handleDetail={handleDetail} setToggleCart={setToggleCart} handleAddtoCart={handleAddtoCart}/>
             </React.Fragment>
           );
         })}
