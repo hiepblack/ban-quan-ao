@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import "./header.css";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { AuthContext } from "../../context/AuthContext";
+import {toast} from 'react-toastify'
 
 const nav_Menu = [
   {
@@ -32,8 +34,19 @@ const nav_Menu = [
 ];
 
 const Header = ({ toggleCart, setToggleCart }) => {
+  const navigate = useNavigate();
+  const { user, dispatch } = useContext(AuthContext);
+  console.log(user);
+  const logout = () => {
+    dispatch({ type: "LOGOUT" });
+    localStorage.removeItem('token');
+    toast.success('Bạn đã đăng xuất!',{
+      position:toast.POSITION.BOTTOM_RIGHT
+    })
+    navigate("/");
+  };
+
   const [toggle, setToggle] = useState(false);
-  const [isuser, setIsUser] = useState(false);
   const totalProduct = useSelector((state) => state.cart.totalQuantity);
   /* ======Change Background header======= */
   window.addEventListener("scroll", function () {
@@ -72,14 +85,19 @@ const Header = ({ toggleCart, setToggleCart }) => {
         </div>
         <div className="nav__right">
           <div>
-            <i class="uil uil-search"></i>
+            <i className="uil uil-search"></i>
           </div>
-          {isuser ? (
-            <div>user</div>
+          {user ? (
+            <div>
+              <p>
+              {user.userName}
+              <i className="uil uil-signout" onClick={logout}></i>
+              </p>
+            </div>
           ) : (
             <div>
               <Link to="/signin">
-                <i class="uil uil-user"></i>
+                <i className="uil uil-user"></i>
               </Link>
             </div>
           )}
