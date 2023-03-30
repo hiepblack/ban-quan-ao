@@ -1,11 +1,15 @@
 .title {
   padding: 1rem 1rem;
   border-radius: 0.25rem;
-  background: var(--container-color);
-  box-shadow: 20px -20px 27px #c0ffff;
+  background: var(--body-color);
+  display: grid;
+  place-items: center;
 }
 .title__content {
-  font-size: var(--h2-font-size);
+  font-size: var(--h1-font-size);
   font-weight: bold;
   color: var(--text-color);
+}
+.title p {
+  font-size:var(--h3-font-size);
 }

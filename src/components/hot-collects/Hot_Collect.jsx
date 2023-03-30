@@ -15,7 +15,7 @@ import { Pagination, Autoplay, Navigation } from "swiper";
 const Hot_Collect = () => {
   return (
     <section className="container collect">
-      <Title name={"BỘ SƯU TẬP HOT NHẤT 2022"} />
+      <Title name={"BỘ SƯU TẬP HOT NHẤT 2022"} desc={'Chọn Các Sản Phẩm Phù Hợp Với Bạn'}/>
       <Swiper
         className="mySwiper collect__gallery"
         loop={true}

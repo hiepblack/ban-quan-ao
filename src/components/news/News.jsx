@@ -6,7 +6,7 @@ import CardNew from "../cardNews/CardNew";
 const News = () => {
   return (
     <section className="container news">
-      <Title name={"Tin tức thời trang"} />
+      <Title name={"Tin tức thời trang"} desc={'Xu Hướng, Phong Cách Thời Trang Mới Nhất.'}/>
       <div className="news__box grid ">
         <CardNew/>
         <CardNew/>

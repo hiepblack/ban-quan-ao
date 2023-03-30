@@ -7,7 +7,7 @@ import { dataProduct } from "../../data/data.js";
 const New_Product = () => {
   return (
     <section className="container newproduct">
-      <Title name={"Top 10 Sản phẩm bán chạy nhất"} />
+      <Title name={"Top 10 Sản phẩm bán chạy nhất"} desc={'Đón Đầu Xu Hướng Định Hình Phong Cách'}/>
       <div className="collect__gallery">
         {dataProduct.map((product,index) => {
           return (

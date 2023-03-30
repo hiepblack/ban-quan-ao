@@ -1,7 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import "./detail.css";
-const Detailcard = ({ product }) => {
-  console.log(product);
+
+const Detailcard = ({ product, handleAddtoCart }) => {
+  const [quantity, setQuantity] = useState(1);
+  const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
+
+  const handleadd = () => {
+    const newProduct = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image.mainImage,
+      quantity: quantity,
+      color: color,
+      size: size,
+      totalPrice: quantity * product.price,
+    };
+    handleAddtoCart(newProduct);
+  };
+  const handleCheckboxSize = (e) => {
+    if (e.target.checked) {
+      setSize(e.target.value);
+    }
+  };
+  const handleCheckboxColor = (e) => {
+    if (e.target.checked) {
+      setColor(e.target.value);
+    }
+  };
+
   return (
     <div className="container">
       <div className="container-detail">
@@ -24,25 +52,55 @@ const Detailcard = ({ product }) => {
           <div>
             <p>Kích thước:</p>
             <div className="btn-size">
-              {product?.size.map((item) => {
-                return <button className="btn">Size {item}</button>;
+              {product.size?.map((item) => {
+                return (
+                  <div className="input__size">
+                    <input
+                      type="checkbox"
+                      id={`size${item}`}
+                      value={item}
+                      onClick={handleCheckboxSize}
+                    />
+                    <label htmlFor={`size${item}`}>Size {item}</label>
+                  </div>
+                );
               })}
             </div>
             <p>Màu sắc:</p>
             <div className="input_color">
-              {product.color.map((item) => {
+              {product.color?.map((item) => {
                 return (
-                  <>
-                    <input type="checkbox" name="" id="" /> <span>{item}</span>
-                  </>
+                  <div className="input__size">
+                    <input
+                      type="checkbox"
+                      id={`size${item}`}
+                      value={item}
+                      onClick={handleCheckboxColor}
+                    />
+                    <label htmlFor={`size${item}`}> {item} </label>
+                  </div>
                 );
               })}
             </div>
             <p>Số lượng:</p>
             <div className="quantity">
-              <input type="number" min={0} defaultValue={1} />
+              <button
+                onClick={() =>
+                  quantity === 1 ? setQuantity(1) : setQuantity(quantity - 1)
+                }
+              >
+                -
+              </button>
+              <input type="number" min={1} value={quantity} />
+              <button
+                onClick={() => {
+                  setQuantity(quantity + 1);
+                }}
+              >
+                +
+              </button>
             </div>
-            <div className="btn-sumbit">
+            <div className="btn-sumbit" onClick={handleadd}>
               <button type="submit" className="up">
                 THÊM VÀO GIỎ HÀNG
               </button>

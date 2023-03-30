@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./header.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const nav_Menu = [
   {
@@ -30,8 +31,10 @@ const nav_Menu = [
   },
 ];
 
-const Header = ({toggleCart,setToggleCart}) => {
+const Header = ({ toggleCart, setToggleCart }) => {
   const [toggle, setToggle] = useState(false);
+  const [isuser, setIsUser] = useState(false);
+  const totalProduct = useSelector((state) => state.cart.totalQuantity);
   /* ======Change Background header======= */
   window.addEventListener("scroll", function () {
     const header = document.querySelector(".header");
@@ -40,6 +43,7 @@ const Header = ({toggleCart,setToggleCart}) => {
     } else {
       header.classList.remove("scroll-header");
     }
+
   });
   return (
     <header className="header">
@@ -47,7 +51,6 @@ const Header = ({toggleCart,setToggleCart}) => {
         <Link to="#" className="nav__logo">
           HaHiep
         </Link>
-
         <div className={toggle ? "nav__menu show-menu" : "nav__menu"}>
           <ul className="nav__list grid">
             {nav_Menu.map((item) => {
@@ -68,15 +71,28 @@ const Header = ({toggleCart,setToggleCart}) => {
           ></i>
         </div>
         <div className="nav__right">
-          <i class="uil uil-search"></i>
-          <Link to="/signin">
-            <i class="uil uil-user"></i>
-          </Link>
-          <i class="uil uil-shopping-bag"
-          onClick={()=>setToggleCart(true)}
-          ></i>
+          <div>
+            <i class="uil uil-search"></i>
+          </div>
+          {isuser ? (
+            <div>user</div>
+          ) : (
+            <div>
+              <Link to="/signin">
+                <i class="uil uil-user"></i>
+              </Link>
+            </div>
+          )}
+
+          <div className="nav__right__bag">
+            <p className="totalProduct">{totalProduct}</p>
+            <i
+              class="uil uil-shopping-bag"
+              onClick={() => setToggleCart(true)}
+            ></i>
+          </div>
         </div>
-        <div className="nav__menu__icon">
+        <div className='nav__menu__icon' onClick={()=>{setToggle(true)}}>
           <i class="uil uil-align-justify nav__icon"></i>
         </div>
       </nav>

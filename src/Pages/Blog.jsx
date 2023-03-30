@@ -4,10 +4,10 @@ import BlogContent from '../components/blog/Blog';
 import Listcate from '../components/blog/Listcate';
 const Blog = () => {
     return (
-        <div>
+        <div className=''>
             <Banner param={"Trang Chủ / Tin Tức"} title={"Tin Tức"} />
             <Listcate param={["Tất cả","Đầm công sở","Đầm thu đông"]}/>
-            <div className='content_blog'>
+            <div className='content_blog container'>
                 <BlogContent/>
             </div>
         </div>
