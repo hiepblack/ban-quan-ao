@@ -1,0 +1,105 @@
+.shop__cart{
+  margin:5rem auto;
+}
+
+.shop__cart__body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 0.5rem;
+}
+
+.shop__cart__form {
+  width: 100%;
+  position: relative;
+}
+.shop__cart__form form {
+  position: sticky;
+  top: 5rem;
+  width: 100%;
+  padding: 0.5rem;
+  min-height: 30rem;
+  border-radius: 7px;
+  background: linear-gradient(145deg, #e0e1e1, #ffffff);
+  box-shadow:  20px 20px 60px #d4d5d5,
+               -20px -20px 60px #ffffff;
+}
+.shop__cart__form_title {
+  width: 100%;
+  text-align: center;
+  margin: 1rem 0;
+}
+.shop__cart__form_title p {
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-semi-bold);
+}
+.shop__cart__form_input {
+  width: 90%;
+  margin: 0.5rem auto;
+  display: flex;
+  flex-direction: column;
+}
+.shop__cart__form_input label {
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-medium);
+  margin: 0.25rem 0;
+}
+.shop__cart__form_input input {
+  width: 100%;
+  height: 3rem;
+  padding: 0 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  background-color: var(--container-color);
+  color: #111;
+}
+.shop__cart__form__footer {
+  width: 90%;
+  margin: 0.5rem auto;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  justify-content: flex-end;
+}
+.shop__cart__form__footer button {
+  width: 6rem;
+  height: 100%;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: var(--title-color);
+  padding: 0 0.25rem;
+}
+.shop__cart__form__footer button:first-child {
+  width: 10rem;
+}
+.shop__cart__form__footer button:hover {
+  background-color: var(--title-color-dark);
+}
+.shop__cart__form_input .money {
+  margin: 1rem 0;
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-semi-bold);
+}
+.shop__cart__none{
+  text-align: left;
+  font-size:2rem;
+  font-weight: 500;
+}
+
+
+/* ======Breakpoints======= */
+
+/* For  medium devices */
+@media screen and (max-width: 768px) {
+  .shop__cart__body{
+    grid-template-columns: 1fr;
+    padding: .5rem;
+    column-gap: 0;
+    margin: 0 auto;
+  }
+  .shop__cart__form{
+    margin:1rem auto;
+  }
+}

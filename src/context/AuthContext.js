@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 
 const initial_state = {
   user:
@@ -50,6 +50,10 @@ const AuthReducer = (state, action) => {
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, initial_state);
+  const [openModelDetail, setOpenModelDetail] = useState(false);
+  const [productId, setProductId] = useState(1);
+  const [toggleCart, setToggleCart] = useState(false);
+
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(state.user));
   }, [state.user]);
@@ -60,6 +64,12 @@ export const AuthContextProvider = ({ children }) => {
         loading: state.loading,
         error: state.error,
         dispatch,
+        openModelDetail,
+        setOpenModelDetail,
+        setProductId,
+        productId,
+        toggleCart,
+        setToggleCart
       }}
     >
       {children}

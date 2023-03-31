@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { useParams } from "react-router-dom";
 import {useDispatch} from 'react-redux';
 import {addCart} from '../redux/cartSlice'
+import { AuthContext } from "../context/AuthContext";
 
 // data fake
 import { dataProduct } from "../data/data.js";
@@ -11,6 +12,7 @@ import Related from "../components/relatedproduct.jsx/Related";
 import Banner from "../components/banner/Banner";
 
 const ProductdetailPage = () => {
+  const {setToggleCart} = useContext(AuthContext)
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
   let { id } = useParams();
@@ -27,6 +29,8 @@ const ProductdetailPage = () => {
   const handleAddtoCart = (product) => {
     const action = addCart(product);
     dispatch(action);
+    setToggleCart(true);
+
   };
   return (
     <>

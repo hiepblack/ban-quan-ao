@@ -107,6 +107,11 @@
   align-items: center;
   border-bottom: 1px solid var(--title-color);
 }
+.nav__shop__cartshop{
+  margin-left: 0.5rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
 .nav__shop__body {
   width: 100%;
 }

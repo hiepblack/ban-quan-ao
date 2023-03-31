@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./productdetailModel.css";
+import { AuthContext } from "../../context/AuthContext";
+import { dataProduct } from "../../data/data";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addCart } from "../../redux/cartSlice";
 
-const ProductDetailModel = ({
-  productDetail,
-  openModel,
-  setOpenModel,
-  setProductDetail,
-  handleAddToCart,
-}) => {
+const ProductDetailModel = () => {
+  const { openModelDetail, setOpenModelDetail, productId,setToggleCart } =
+    useContext(AuthContext);
+    const dispatch = useDispatch();
+
+  const [productDetail, setProductDetail] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
+
+
+
+  useEffect(() => {
+    const product = dataProduct.find((item) => item.id === productId);
+    setProductDetail(product);
+  }, [productId]);
 
   const handleadd = () => {
     const newProduct = {
@@ -19,12 +30,14 @@ const ProductDetailModel = ({
       price: productDetail.price,
       image: productDetail.image.mainImage,
       quantity: quantity,
-      color:color,
+      color: color,
       size: size,
       totalPrice: quantity * productDetail.price,
     };
-    handleAddToCart(newProduct);
-    setOpenModel(false);
+    const action = addCart(newProduct);
+    dispatch(action);
+    setToggleCart(true);
+    setOpenModelDetail(false);
   };
   const handleCheckboxSize = (e) => {
     if (e.target.checked) {
@@ -38,36 +51,52 @@ const ProductDetailModel = ({
   };
   return (
     <div
-      className={openModel ? "product__model active-modal" : "product__model"}
+      className={
+        openModelDetail ? "product__model active-modal" : "product__model"
+      }
     >
       <div className="product__model__content">
-        <div
-          className="product__model__close"
-          onClick={() => setOpenModel(false)}
-        >
-          X
+        <div className="product__model__close">
+          <p>CHỌN KIỂU SẢN PHẨM</p>
+          <p onClick={() => setOpenModelDetail(false)}>
+            <i class="uil uil-times"></i>
+          </p>
         </div>
         <div className="product__model__detail">
           <div className="product__model_img">
             <div className="product__model__main">
-              <img src={productDetail.image?.mainImage} alt="" />
+              <img src={productDetail?.image?.mainImage} alt="" />
             </div>
-            <div className="product__model__slide">
-              {productDetail.image?.slideImage?.map((img) => {
-                return <img src={img} alt="" />;
-              })}
+            <div className="product__model__price">
+              <h1>{productDetail?.name?.toUpperCase()}</h1>
+              <p className="price">{productDetail?.price}₫</p>
+              <p>Thương hiệu : {productDetail?.brand}</p>
             </div>
           </div>
 
           <div className="product__model_desc">
-            <div className="content-deltail">
-              <h1>{productDetail.name?.toUpperCase()}</h1>
-              <p className="price">{productDetail.price}₫</p>
-              <p>THƯƠNG HIỆU: {productDetail.brand}</p>
+            <div className="product__model__color">
+              <p>Màu sắc:</p>
+              <div className="product__model__color__input">
+                {productDetail?.color?.map((item) => {
+                  return (
+                    <div className="input__size">
+                      <input
+                        type="checkbox"
+                        id={`size${item}`}
+                        value={item}
+                        onClick={handleCheckboxColor}
+                      />
+                      <label htmlFor={`size${item}`}> {item} </label>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-            <div>
+
+            <div className="product__model__color">
               <p>Kích thước:</p>
-              <div className="btn-size">
+              <div className="product__model__color__input">
                 {productDetail?.size?.map((item) => {
                   return (
                     <div className="input__size">
@@ -82,32 +111,10 @@ const ProductDetailModel = ({
                   );
                 })}
               </div>
-              <p>Màu sắc:</p>
-              <div className="input_color">
-                {productDetail.color?.map((item) => {
-                  return (
-                    <div className="input__size">
-                      <input
-                        type="checkbox"
-                        id={`size${item}`}
-                        value={item}
-                        onClick={handleCheckboxColor}
-                      />
-                      <label htmlFor={`size${item}`}> {item} </label>
-                    </div>
-                  );
-                })}
-              </div>
+            </div>
+            <div className="product__model__quantity">
               <p>Số lượng:</p>
-              <div className="quantity">
-                <button
-                  onClick={() => {
-                    setQuantity(quantity + 1);
-                  }}
-                >
-                  +
-                </button>
-                <input type="number" min={1} value={quantity} />
+              <div className="product__model__quantity__btn">
                 <button
                   onClick={() =>
                     quantity === 1 ? setQuantity(1) : setQuantity(quantity - 1)
@@ -115,13 +122,27 @@ const ProductDetailModel = ({
                 >
                   -
                 </button>
-              </div>
-              <div className="btn-sumbit">
-                <button type="submit" className="up" onClick={handleadd}>
-                  THÊM VÀO GIỎ HÀNG
+                <input type="number" min={1} value={quantity} />
+                <button
+                  onClick={() => {
+                    setQuantity(quantity + 1);
+                  }}
+                >
+                  +
                 </button>
               </div>
             </div>
+
+            <div className="btn-sumbit">
+              <button type="submit" className="up" onClick={handleadd}>
+                THÊM VÀO GIỎ HÀNG
+              </button>
+            </div>
+            <p className="product__model__link">
+              <Link to={`/productDetail/${productDetail?.id}`}>
+                Xem chi tiết sản phẩm
+              </Link>
+            </p>
           </div>
         </div>
       </div>

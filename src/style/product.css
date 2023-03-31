@@ -70,50 +70,6 @@
   font-size: 1rem;
   margin: 0 0.5rem;
 }
-/* model */
-.product__model {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: var(--z-modal);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 1rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.3s;
-}
-.product__model__content {
-  width: 60rem;
-  position: relative;
-  background-color: var(--body-color);
-  padding: 4.5rem 2.5rem 2.5rem;
-  border-radius: .5rem;
-}
-.product__model__close {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  font-size: 1.5rem;
-  color: var(--title-color);
-  cursor: pointer;
-  border: 1px solid black;
-}
-.product__model__detail{
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    margin-top: 1rem;
-}
-/* active */
-.active-modal{
-  opacity: 1;
-  visibility: visible;
-}
 /* ======Breakpoints======= */
 /* For  medium devices */
 @media screen and (max-width: 768px) {

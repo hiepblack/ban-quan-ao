@@ -1,5 +1,5 @@
 /*=============== google font =============*/
-@import url("https://fonts.googleapis.com/css2?family=Island+Moments&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400&family=Poppins:wght@400;500;600&family=Quicksand:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Island+Moments&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400&family=Poppins:wght@200;300;400;500;600&family=Quicksand:wght@300;400;500;600;700&display=swap');
 /*=========== Variable css============= */
 
 :root {
@@ -29,7 +29,7 @@
   --mono: "source-code-pro";
   --display: "lust-sans";
   /* Font and typography */
-  --body-font: "Poppins", sans-serif;
+  --body-font: 'Quicksand', sans-serif;
   /* 0.5rem = 8px */
 
   --big-font-size: 3.5rem;

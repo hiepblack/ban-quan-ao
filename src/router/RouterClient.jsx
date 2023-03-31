@@ -8,18 +8,20 @@ import ProductdetailPage from "../Pages/Product-detail";
 import Blogdetail from "../Pages/Blog_detail";
 import Sigin from "../Pages/Sigin";
 import Sigup from "../Pages/Sigup";
+import Cart from "../Pages/Cart";
 
-const RouterClient = ({setToggleCart}) => {
+const RouterClient = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/product" element={<Products setToggleCart={setToggleCart}/>} />
+      <Route path="/product" element={<Products />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/signin" element={<Sigin />} />
       <Route path="/signup" element={<Sigup />} />
       <Route path="/productdetail/:id" element={<ProductdetailPage />} />
       <Route path="/blogdetail" element={<Blogdetail/>} />
+      <Route path="/cart" element={<Cart/>} />
     </Routes>
   );
 };

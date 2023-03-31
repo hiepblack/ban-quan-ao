@@ -33,10 +33,9 @@ const nav_Menu = [
   },
 ];
 
-const Header = ({ toggleCart, setToggleCart }) => {
+const Header = () => {
   const navigate = useNavigate();
-  const { user, dispatch } = useContext(AuthContext);
-  console.log(user);
+  const { user, dispatch,setToggleCart } = useContext(AuthContext);
   const logout = () => {
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem('token');
@@ -66,10 +65,10 @@ const Header = ({ toggleCart, setToggleCart }) => {
         </Link>
         <div className={toggle ? "nav__menu show-menu" : "nav__menu"}>
           <ul className="nav__list grid">
-            {nav_Menu.map((item) => {
+            {nav_Menu.map((item,index) => {
               return (
-                <li className="nav__item">
-                  <Link to={item.path} className="nav__link">
+                <li className="nav__item" key={item.name}>
+                  <Link to={item.path} className="nav__link" >
                     <i className={item.icon}></i> {item.name}
                   </Link>
                 </li>

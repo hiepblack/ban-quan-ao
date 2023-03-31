@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./detail.css";
 
 const Detailcard = ({ product, handleAddtoCart }) => {
+
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
@@ -51,7 +52,7 @@ const Detailcard = ({ product, handleAddtoCart }) => {
           </div>
           <div>
             <p>Kích thước:</p>
-            <div className="btn-size">
+            <div className="product__model__color__input">
               {product.size?.map((item) => {
                 return (
                   <div className="input__size">
@@ -67,7 +68,7 @@ const Detailcard = ({ product, handleAddtoCart }) => {
               })}
             </div>
             <p>Màu sắc:</p>
-            <div className="input_color">
+            <div className="product__model__color__input">
               {product.color?.map((item) => {
                 return (
                   <div className="input__size">
@@ -83,7 +84,7 @@ const Detailcard = ({ product, handleAddtoCart }) => {
               })}
             </div>
             <p>Số lượng:</p>
-            <div className="quantity">
+            <div className="product__model__quantity__btn">
               <button
                 onClick={() =>
                   quantity === 1 ? setQuantity(1) : setQuantity(quantity - 1)

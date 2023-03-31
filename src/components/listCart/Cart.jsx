@@ -1,6 +1,7 @@
 import React from "react";
 
 const Cart = ({ item, handleDelete, handincrement, handdecrement }) => {
+
   const {name,image,quantity,price,totalPrice} = item;
   const remove = () => {
     handleDelete(item.id);
@@ -9,7 +10,7 @@ const Cart = ({ item, handleDelete, handincrement, handdecrement }) => {
     handincrement(item);
   };
   const removeon = () => {
-    if (item.quantity === 0) {
+    if (item.quantity === 1) {
       return;
     }
     handdecrement(item);
