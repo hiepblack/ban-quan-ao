@@ -2,19 +2,18 @@ import React, { useState } from "react";
 import "./detail.css";
 
 const Detailcard = ({ product, handleAddtoCart }) => {
-
   const [quantity, setQuantity] = useState(1);
-  const [size, setSize] = useState("");
-  const [color, setColor] = useState("");
+  const [size, setSize] = useState("M");
+  const [color, setColor] = useState("black");
 
   const handleadd = () => {
     const newProduct = {
-      id: product.id,
-      name: product.name,
+      _id: product._id,
+      nameProduct: product.nameProduct,
       price: product.price,
-      image: product.image.mainImage,
+      imgProduct: product?.imgProduct[0],
       quantity: quantity,
-      color: color,
+      colors: color,
       size: size,
       totalPrice: quantity * product.price,
     };
@@ -27,6 +26,7 @@ const Detailcard = ({ product, handleAddtoCart }) => {
   };
   const handleCheckboxColor = (e) => {
     if (e.target.checked) {
+      console.log(e.target.value);
       setColor(e.target.value);
     }
   };
@@ -36,22 +36,26 @@ const Detailcard = ({ product, handleAddtoCart }) => {
       <div className="container-detail">
         <div className="image-product">
           <div className="thumbnail">
-            {product?.image.slideImage.map((img) => {
-              return <img src={img} alt="" />;
-            })}
+            <img src={product?.imgProduct[0]} alt="" />
+            <img src={product?.imgProduct[0]} alt="" />
+            <img src={product?.imgProduct[0]} alt="" />
+            {/* {product?.image.slideImage.map((img) => {
+              return ;
+            })} */}
           </div>
           <div className="large-image">
-            <img src={product.image.mainImage} alt="" />
+            <img src={product?.imgProduct[0]} alt="" />
           </div>
         </div>
         <div className="detail-product">
           <div className="content-deltail">
-            <h1>{product.name}</h1>
+            <h1>{product.nameProduct}</h1>
             <p className="price">{product.price}₫</p>
             <p>THƯƠNG HIỆU: {product.brand}</p>
           </div>
+
           <div>
-            <p>Kích thước:</p>
+            <p>Kích thước: {size}</p>
             <div className="product__model__color__input">
               {product.size?.map((item) => {
                 return (
@@ -67,18 +71,25 @@ const Detailcard = ({ product, handleAddtoCart }) => {
                 );
               })}
             </div>
-            <p>Màu sắc:</p>
+            <p>Màu sắc: {color} </p>
             <div className="product__model__color__input">
-              {product.color?.map((item) => {
+              {product.colors?.map((item) => {
                 return (
                   <div className="input__size">
-                    <input
-                      type="checkbox"
-                      id={`size${item}`}
-                      value={item}
-                      onClick={handleCheckboxColor}
-                    />
-                    <label htmlFor={`size${item}`}> {item} </label>
+                    <div className="box" style={{backgroundColor:`${item}`}}>
+                      <input
+                        type="radio"
+                        id={`size${item}`}
+                        value={item}
+                        onClick={handleCheckboxColor}
+                        name="color"
+                      />
+                      <label
+                        className="box-lable"
+                        htmlFor={`size${item}`}
+                        
+                      ></label>
+                    </div>
                   </div>
                 );
               })}

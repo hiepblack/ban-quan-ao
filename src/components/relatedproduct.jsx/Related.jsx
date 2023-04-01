@@ -3,16 +3,22 @@ import CardProducts from "../cardProduct/CardProducts";
 import Comment from "./comment/comment";
 import Description from "./description/description";
 import "./related.css";
-import { dataProduct } from "../../data/data";
+import axios from "axios";
 
 const Related = ({ product }) => {
   const [show, setShow] = useState(true);
   const [dataRelateProduct, setDataRelateProduct] = useState([]);
   useEffect(() => {
-    const data = dataProduct.filter(
-      (item) => item.category === product.category
-    );
-    setDataRelateProduct(data);
+    const dataProduct = async () => {
+      await axios.get(`http://localhost:4000/products/`).then(({ data }) => {
+        const datafilter = data.products.filter(
+          (item) => item.categoryId._id === product.categoryId._id
+        );
+        console.log(datafilter);
+        setDataRelateProduct(datafilter);
+      });
+    };
+    dataProduct();
   }, [product]);
 
   return (
@@ -40,7 +46,7 @@ const Related = ({ product }) => {
         <p>Sản phẩm liên quan</p>
         <div className="card-related">
           {dataRelateProduct.map((product, index) => {
-            return <CardProducts product={product} key={index}/>;
+            return <CardProducts product={product} key={index} />;
           })}
         </div>
       </div>

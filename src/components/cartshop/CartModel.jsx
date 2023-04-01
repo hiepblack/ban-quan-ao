@@ -17,12 +17,12 @@ const CartModel = ({ product,handleDelete,handincrement ,handdecrement}) => {
 
   return (
     <div className="CartModel">
-      <img src={product.image} alt="" />
+      <img src={product.imgProduct} alt="" />
       <div className="CartModel__body">
         <div className="CartModel__body__title">
-          <p>{product.name}</p>
+          <p>{product.nameProduct}</p>
           <p>{product.price}</p>
-          <p>{product.color}</p>
+          <p>{product.colors}</p>
           <p>{product.size}</p>
           <div className="CartModel__body__button">
             <button onClick={removeon}>-</button>

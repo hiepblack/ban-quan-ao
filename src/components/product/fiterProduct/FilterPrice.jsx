@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const FilterPrice = () => {
+const FilterPrice = ({handleSize}) => {
   const [togglePrice, setTogglePrice] = useState(true);
   return (
     <div className="filter__size">
@@ -21,7 +21,7 @@ const FilterPrice = () => {
         <ul>
           <li>
             <a href="">
-              <input type="checkbox" name="" id="" />
+              <input type="checkbox" name="" id="" value={500000}/>
               <span className="check__mark">Dưới 500.000</span>
             </a>
           </li>

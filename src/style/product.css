@@ -18,7 +18,7 @@
   margin-top: 1rem;
 }
 .filter__size__header p{
-  font-size:var(--h3-font-size);
+  font-size:var(--normal-font-size);
   font-weight:var(--font-normal);
 }
 .filter__size__header {

@@ -1,45 +1,43 @@
-import React, { useEffect, useState,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import {useDispatch} from 'react-redux';
-import {addCart} from '../redux/cartSlice'
+import { useDispatch } from "react-redux";
+import { addCart } from "../redux/cartSlice";
 import { AuthContext } from "../context/AuthContext";
-
-// data fake
-import { dataProduct } from "../data/data.js";
+import axios from "axios";
 // components
 import Detailcard from "../components/detail-card/Detailcard";
 import Related from "../components/relatedproduct.jsx/Related";
 import Banner from "../components/banner/Banner";
 
 const ProductdetailPage = () => {
-  const {setToggleCart} = useContext(AuthContext)
+  const { setToggleCart } = useContext(AuthContext);
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
   let { id } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const productDetail = dataProduct.find((item) => {
-      return item.id === id;
-    });
-    setProduct(productDetail);
-    setLoading(false);
+    axios
+      .get(`http://localhost:4000/products/${id}`)
+      .then(({ data }) => {
+        setProduct(data.product)
+        setLoading(false);
+      });
   }, [id]);
 
   const handleAddtoCart = (product) => {
     const action = addCart(product);
     dispatch(action);
     setToggleCart(true);
-
   };
   return (
     <>
-      <Banner param={"Trang Chủ / Chi tiết sản phẩm"} title={product.name} />
+      <Banner param={"Trang Chủ / Chi tiết sản phẩm"} title={product.nameProduct} />
       {loading ? (
         ""
       ) : (
         <>
-          <Detailcard product={product} handleAddtoCart={handleAddtoCart}/>
+          <Detailcard product={product} handleAddtoCart={handleAddtoCart} />
           <Related product={product} />
         </>
       )}

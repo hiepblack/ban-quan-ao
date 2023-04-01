@@ -5,32 +5,35 @@ import { dataProduct } from "../../data/data";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addCart } from "../../redux/cartSlice";
+import axios from "axios";
 
 const ProductDetailModel = () => {
-  const { openModelDetail, setOpenModelDetail, productId,setToggleCart } =
+  const { openModelDetail, setOpenModelDetail, productId, setToggleCart } =
     useContext(AuthContext);
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [productDetail, setProductDetail] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
 
-
-
   useEffect(() => {
-    const product = dataProduct.find((item) => item.id === productId);
-    setProductDetail(product);
+    const productDetail = async () => {
+      await axios
+        .get(`http://localhost:4000/products/${productId}`)
+        .then(({ data }) => setProductDetail(data.product));
+    };
+    productDetail()
   }, [productId]);
 
   const handleadd = () => {
     const newProduct = {
-      id: productDetail.id,
-      name: productDetail.name,
+      _id: productDetail._id,
+      nameProduct: productDetail.nameProduct,
       price: productDetail.price,
-      image: productDetail.image.mainImage,
+      imgProduct: productDetail.imgProduct[0],
       quantity: quantity,
-      color: color,
+      colors: color,
       size: size,
       totalPrice: quantity * productDetail.price,
     };
@@ -65,10 +68,10 @@ const ProductDetailModel = () => {
         <div className="product__model__detail">
           <div className="product__model_img">
             <div className="product__model__main">
-              <img src={productDetail?.image?.mainImage} alt="" />
+              <img src={productDetail?.imgProduct} alt="" />
             </div>
             <div className="product__model__price">
-              <h1>{productDetail?.name?.toUpperCase()}</h1>
+              <h1>{productDetail?.nameProduct?.toUpperCase()}</h1>
               <p className="price">{productDetail?.price}₫</p>
               <p>Thương hiệu : {productDetail?.brand}</p>
             </div>
@@ -78,16 +81,20 @@ const ProductDetailModel = () => {
             <div className="product__model__color">
               <p>Màu sắc:</p>
               <div className="product__model__color__input">
-                {productDetail?.color?.map((item) => {
+                {productDetail?.colors?.map((item) => {
                   return (
                     <div className="input__size">
+                      <div className="box" style={{backgroundColor:`${item}`}}>
+
                       <input
-                        type="checkbox"
+                        type="radio"
                         id={`size${item}`}
                         value={item}
                         onClick={handleCheckboxColor}
-                      />
-                      <label htmlFor={`size${item}`}> {item} </label>
+                        name="color"
+                        />
+                      <label htmlFor={`size${item}`} className="box-lable">  </label>
+                        </div>
                     </div>
                   );
                 })}
@@ -139,7 +146,7 @@ const ProductDetailModel = () => {
               </button>
             </div>
             <p className="product__model__link">
-              <Link to={`/productDetail/${productDetail?.id}`}>
+              <Link to={`/productDetail/${productDetail?._id}`}>
                 Xem chi tiết sản phẩm
               </Link>
             </p>

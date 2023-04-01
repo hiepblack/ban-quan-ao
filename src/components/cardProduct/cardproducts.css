@@ -39,6 +39,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: .5rem 0;
 }
 .product-catagory {
   font-size: var(--normal-font-size);
@@ -46,8 +47,8 @@
   text-transform: uppercase;
   color: var(--title-color);
 }
-.product-details h4 a {
-  font-weight: 500;
+.product-details h4 a{
+  font-weight: 600;
   text-transform: uppercase;
   color: #363636;
   transition: 0.3s;

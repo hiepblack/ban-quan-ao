@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const FilterCategory = () => {
+const FilterCategory = ({handleSize}) => {
   const [toggleCate, setToggleCate] = useState(true);
   return (
     <div className="filter__size">

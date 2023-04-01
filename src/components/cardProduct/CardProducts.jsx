@@ -11,13 +11,13 @@ const CardProducts = ({ product }) => {
   const dispatch = useDispatch();
   const handleAdd = () => {
     const newProduct = {
-      id: product.id,
-      name: product.name,
+      _id: product.id,
+      nameProduct: product.nameProduct,
       price: product.price,
       quantity: 1,
-      image: product.image.mainImage,
-      size: 1,
-      color: "black",
+      imgProduct: product.imgProduct[0],
+      size: 'M',
+      colors: "black",
       totalPrice: product.price * 1,
     };
     const action = addCart(newProduct);
@@ -27,20 +27,20 @@ const CardProducts = ({ product }) => {
   };
   const handleShowProductDetail = () => {
     setOpenModelDetail(true);
-    setProductId(product.id);
+    setProductId(product._id);
   };
   return (
     <div className="product-card">
       <div className="product__img">
-        <img src={product?.image.mainImage} alt="" />
+        <img src={product?.imgProduct[0]} alt="" />
         <div className="product__img__btn">
           <button onClick={handleShowProductDetail}>Xem Nhanh</button>
         </div>
       </div>
       <div className="product-details">
-        <span className="product-catagory">{product?.category}</span>
+        <span className="product-catagory">{product?.brand}</span>
         <h4>
-          <Link to={`/productdetail/${product?.id}`}>{product?.name}</Link>
+          <Link to={`/productdetail/${product?._id}`}>{product?.nameProduct}</Link>
         </h4>
         <div className="product-bottom-details">
           <div className="product-links">

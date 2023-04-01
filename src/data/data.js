@@ -4,7 +4,7 @@ export const dataProduct = [
     name: "sản phẩm 1",
     price: 250000,
     brand: "Product brand",
-    size: [1, 2, 3],
+    size: ['M', 'L', 'XL'],
     color: ["black", "white", "blue"],
     quality: 20,
     description: {
@@ -28,7 +28,7 @@ export const dataProduct = [
     name: "sản phẩm 2",
     price: 300000,
     brand: "Product brand",
-    size: [1, 2],
+    size: ['M', 'L'],
     color: ["#ccc", "#111"],
     quality: 10,
     description: {
@@ -52,8 +52,8 @@ export const dataProduct = [
     name: "sản phẩm 3",
     price: 250000,
     brand: "Product brand",
-    size: [1, 2, 3],
-    color: ["#ccc", "#111", "#fff"],
+    size: ['M', 'L', 'XL'],
+    color: ["Trắng", "Đen", "Xanh"],
     quality: 10,
     description: {
       title: "Product description",
@@ -76,7 +76,7 @@ export const dataProduct = [
     name: "sản phẩm 4",
     price: 350000,
     brand: "Product brand",
-    size: [1, 2, 3],
+    size: ['M', 'L', 'XL'],
     color: ["#ccc", "#111", "#fff"],
     quality: 30,
     description: {
@@ -100,7 +100,7 @@ export const dataProduct = [
     name: "sản phẩm 5",
     price: 250000,
     brand: "Product brand",
-    size: [1, 2],
+    size: ['M', 'L'],
     color: ["#ccc", "#111", "#fff"],
     quality: 20,
     description: {
@@ -124,7 +124,7 @@ export const dataProduct = [
     name: "sản phẩm 6",
     price: 250000,
     brand: "Product brand",
-    size: [1, 2, 3],
+    size: ['M', 'L', 'XL'],
     color: ["#ccc", "#111", "#fff"],
     quality: 20,
     description: {
@@ -148,7 +148,7 @@ export const dataProduct = [
     name: "sản phẩm 7",
     price: 350000,
     brand: "Product brand",
-    size: [1, 2, 3],
+    size: ['M', 'XL'],
     color: ["#ccc", "#111"],
     quality: 20,
     description: {

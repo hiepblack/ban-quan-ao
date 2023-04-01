@@ -1,39 +1,49 @@
-import React,{useState} from 'react'
+import React, { useState } from "react";
 
-const FilterSize = () => {
+const FilterSize = ({ setDataFilter,handleSize }) => {
   const [toggleSize, setToggleSize] = useState(true);
+  const size = ["M", "L", "XL"];
+
+  const handleclick = (e) => {
+    if(e.target.checked) {
+      console.log(e.target.value);
+      handleSize(e.target.value)
+    }
+  }
   return (
     <div className="filter__size">
-        <div className="filter__size__header" onClick={()=>setToggleSize(!toggleSize)}>
-          <p>Kích thước</p>
-          <span className={toggleSize ? "rotateX" : "rotateY"} >
-            <i class="uil uil-angle-down"></i>
-          </span>
-        </div>
-        <div className={toggleSize ? "filter__size__body":"filter__size__body show_body"}>
-          <ul>
-            <li>
-              <a href="">
-                <input type="checkbox" name="" id="" />
-                <span className="check__mark">Size1</span>
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <input type="checkbox" name="" id="" />
-                <span>Size1</span>
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <input type="checkbox" name="" id="" />
-                <span>Size1</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+      <div
+        className="filter__size__header"
+        onClick={() => setToggleSize(!toggleSize)}
+      >
+        <p>Kích thước</p>
+        <span className={toggleSize ? "rotateX" : "rotateY"}>
+          <i class="uil uil-angle-down"></i>
+        </span>
       </div>
-  )
-}
+      <div
+        className={
+          toggleSize ? "filter__size__body" : "filter__size__body show_body"
+        }
+      >
+        <ul>
+          {size.map((item, index) => {
+            return (
+              <li key={index}>
+                <input
+                  type="radio"
+                  value={item}
+                  onClick={handleclick}
+                  name="item"
+                />
+                <span className="check__mark">Size {item}</span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+};
 
-export default FilterSize
+export default FilterSize;

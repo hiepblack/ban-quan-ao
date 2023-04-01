@@ -4,6 +4,9 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 2.5rem;
 }
+.detail-product div p {
+  font-weight: 600;
+}
 .image-product {
   display: flex;
   width: 100%;
@@ -19,17 +22,26 @@
   object-fit: cover;
 }
 
-.input_color {
-  margin: 0.5rem auto;
-  display: flex;
-  align-items: center;
+.box {
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+.box input{
+  visibility: hidden;
+}
+.box-lable{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 120%;
+  height: 120%;
+}
+input[type="radio"]:checked + label{
+  border: 2px solid black;
 }
 
-.input_color input{
-  height: 2rem;
-  width: 1.5rem;
-  margin:0 0.5rem;
-}
 .btn-size {
   margin: 1rem 0;
   display: grid;
@@ -87,7 +99,7 @@
   .image-product {
     flex-direction: column-reverse;
   }
-  .thumbnail{
+  .thumbnail {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
