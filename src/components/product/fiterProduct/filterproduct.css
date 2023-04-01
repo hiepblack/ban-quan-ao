@@ -1,3 +1,10 @@
 .filter__container__box p{
     font-size:var(--h2-font-size);
 }
+.filter__size__li span{
+    margin-left: .5rem;
+}
+.filter__size__li {
+    display: flex;
+    align-items: center;
+}

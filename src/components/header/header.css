@@ -162,7 +162,7 @@
   }
   .nav__shop {
     background-color: var(--body-color);
-    grid-template-columns: max-content;
+    grid-template-columns: 1fr;
   }
   .nav__shop__back {
     display: none;

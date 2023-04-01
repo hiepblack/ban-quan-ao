@@ -26,7 +26,7 @@ const FilterSize = ({ setSize }) => {
         <ul>
           {size.map((item, index) => {
             return (
-              <li key={index}>
+              <li key={index} className="filter__size__li">
                 <input
                   type="radio"
                   value={item}

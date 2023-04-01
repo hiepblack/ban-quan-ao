@@ -4,6 +4,7 @@ import Slide from "../components/slideshow/Slide";
 import Hot_Collect from "../components/hot-collects/Hot_Collect";
 import New_Product from "../components/newProduct/New_Product";
 import News from "../components/news/News";
+import CollectBanner from "../components/collect-banner/CollectBanner";
 
 const Home = () => {
   const [data,setData] = useState([])
@@ -15,7 +16,7 @@ const Home = () => {
       <Slide />
       <Hot_Collect />
       <New_Product data={data}/>
-
+      <CollectBanner/>
       <News />
     </>
   );

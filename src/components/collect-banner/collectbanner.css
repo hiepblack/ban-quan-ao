@@ -1,0 +1,92 @@
+.collectbanner {
+  margin: 5rem auto;
+}
+.collectbanner__box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1rem 1.5rem;
+  margin: 10rem auto;
+  column-gap: 5rem;
+}
+.collectbanner__box__img {
+  width: 100%;
+  overflow: hidden;
+}
+.collectbanner__box__img img {
+  width: 90%;
+  border-radius: 0.5rem;
+}
+.collectbanner__box__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.collectbanner__box__content p:first-child {
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
+.collectbanner__box__content h2 {
+  font-size: 4rem;
+  width: 100%;
+  color: yellowgreen;
+  margin-bottom: 1.5rem;
+}
+
+.collectbanner__box__content .title1 {
+  font-size: 4rem;
+  width: 100%;
+  color: rgb(142, 127, 197);
+  margin-bottom: 1.5rem;
+}
+.collectbanner__box__content .desc {
+  font-weight: 400;
+  margin-bottom: 5rem;
+  font-size: 1.25rem;
+  width: 90%;
+}
+.collectbanner__box__content button {
+  width: 90%;
+  height: 3rem;
+  line-height: 3rem;
+  font-weight: 500;
+  background-color: transparent;
+  border: 1px solid #ccc;
+}
+.collectbanner__box__content button a {
+  display: block;
+  width: 100%;
+  font-weight: 500;
+  background-color: transparent;
+}
+
+.collectbanner__box__content button:hover a {
+  background-color: var(--title-color-dark);
+  color: var(--body-color);
+}
+
+@media screen and (max-width: 768px) {
+  .collectbanner__box {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+  .collectbanner__box__img img {
+    width: 100%;
+    margin: 2rem 0;
+  }
+  .collectbanner__box__content p:first-child {
+    width: 100%;
+    text-align: center;
+  }
+  .collectbanner__box__content h2 {
+    text-align: center;
+  }
+  .collectbanner__box__content .desc {
+    text-align: justify;
+    width: 100%;
+  }
+  .collectbanner__box__content button {
+    width: 100%;
+  }
+}

@@ -24,7 +24,7 @@ const FilterPrice = ({ setPrice }) => {
         }
       >
         <ul>
-          <li>
+          <li className="filter__size__li">
             <input
               type="radio"
               name="a"
@@ -34,7 +34,7 @@ const FilterPrice = ({ setPrice }) => {
             />
             <span className="check__mark">Dưới 500.000</span>
           </li>
-          <li>
+          <li className="filter__size__li">
             <input
               type="radio"
               name="a"
@@ -44,7 +44,7 @@ const FilterPrice = ({ setPrice }) => {
             />
             <span>500.000 - 600.000</span>
           </li>
-          <li>
+          <li className="filter__size__li">
             <input
               type="radio"
               name="a"
@@ -54,7 +54,7 @@ const FilterPrice = ({ setPrice }) => {
             />
             <span>600.000-700.000</span>
           </li>
-          <li>
+          <li className="filter__size__li">
             <input
               type="radio"
               name="a"
