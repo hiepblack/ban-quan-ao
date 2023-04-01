@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 
-const FilterPrice = ({handleSize}) => {
+const FilterPrice = ({ setPrice }) => {
   const [togglePrice, setTogglePrice] = useState(true);
+
+  const handleClick = (e) => {
+    setPrice(e.target.value);
+  };
+
   return (
     <div className="filter__size">
-      <div className="filter__size__header"  onClick={() => setTogglePrice(!togglePrice)}>
+      <div
+        className="filter__size__header"
+        onClick={() => setTogglePrice(!togglePrice)}
+      >
         <p>Giá sản phẩm</p>
-        <span
-          className={togglePrice ? "rotateX" : "rotateY"}
-         
-        >
+        <span className={togglePrice ? "rotateX" : "rotateY"}>
           <i class="uil uil-angle-down"></i>
         </span>
       </div>
@@ -20,28 +25,44 @@ const FilterPrice = ({handleSize}) => {
       >
         <ul>
           <li>
-            <a href="">
-              <input type="checkbox" name="" id="" value={500000}/>
-              <span className="check__mark">Dưới 500.000</span>
-            </a>
+            <input
+              type="radio"
+              name="a"
+              id=""
+              value={1}
+              onClick={handleClick}
+            />
+            <span className="check__mark">Dưới 500.000</span>
           </li>
           <li>
-            <a href="">
-              <input type="checkbox" name="" id="" />
-              <span>500.000 - 600.000</span>
-            </a>
+            <input
+              type="radio"
+              name="a"
+              id=""
+              value={2}
+              onClick={handleClick}
+            />
+            <span>500.000 - 600.000</span>
           </li>
           <li>
-            <a href="">
-              <input type="checkbox" name="" id="" />
-              <span>600.000-700.000</span>
-            </a>
+            <input
+              type="radio"
+              name="a"
+              id=""
+              value={3}
+              onClick={handleClick}
+            />
+            <span>600.000-700.000</span>
           </li>
           <li>
-            <a href="">
-              <input type="checkbox" name="" id="" />
-              <span>Trên 700.000</span>
-            </a>
+            <input
+              type="radio"
+              name="a"
+              id=""
+              value={4}
+              onClick={handleClick}
+            />
+            <span>Trên 700.000</span>
           </li>
         </ul>
       </div>

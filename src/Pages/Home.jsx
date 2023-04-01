@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios"
 import Slide from "../components/slideshow/Slide";
 import Hot_Collect from "../components/hot-collects/Hot_Collect";
 import New_Product from "../components/newProduct/New_Product";
 import News from "../components/news/News";
-import axios from "axios"
 
 const Home = () => {
   const [data,setData] = useState([])
@@ -15,6 +15,7 @@ const Home = () => {
       <Slide />
       <Hot_Collect />
       <New_Product data={data}/>
+
       <News />
     </>
   );

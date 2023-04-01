@@ -9,6 +9,15 @@ const Products = ({ setToggleCart }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const handleFilter = async (condition) => {
+    axios
+    .post(`http://localhost:4000/products/sort/?${condition}=1`)
+    .then(({ data }) => {
+      setData(data.products);
+      setLoading(true);
+    });
+  };
+
   useEffect(() => {
     axios.get(`http://localhost:4000/products/`).then(({ data }) => {
       setData(data.products);
@@ -16,29 +25,12 @@ const Products = ({ setToggleCart }) => {
     });
   }, []);
 
-  const handleSize = async (size, price = 100000) => {
-    await axios
-      .post(
-        `http://localhost:4000/products/filter/?size=${size}&price=${price}`
-      )
-      .then(({ data }) => setData(data.product));
-  };
-  
-  const handleFilter = async (condition) => {
-    axios
-      .post(`http://localhost:4000/products/sort/?${condition}=1`)
-      .then(({ data }) => {
-        setData(data.products);
-        setLoading(true);
-      });
-  };
-
   return (
     <>
       <Banner param={"Trang Chủ / Bộ Sưu Tập"} title={"Bộ Sưu Tập"} />
       <section className="product container">
         <div className="product__container grid">
-          <FiterProduct handleSize={handleSize} />
+          <FiterProduct setData={setData} />
           {loading ? (
             <ListProduct
               data={data}
