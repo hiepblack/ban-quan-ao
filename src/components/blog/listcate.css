@@ -1,6 +1,8 @@
 .list_categorys{
     display: flex;
     justify-content: center;
+    border-bottom: 1px solid #ccc;
+    padding: 1rem 0;
 }
 .list_categorys div ul{
     display: flex;
@@ -12,6 +14,5 @@
     background-color:transparent;
 }
 .list_categorys div ul li :hover{
-    border-bottom: solid 1px ;
-    
+    background-color: #eee;
 }

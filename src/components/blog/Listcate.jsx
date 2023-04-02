@@ -1,6 +1,7 @@
 import React from 'react'
 import "./listcate.css"
-import { Link } from "react-router-dom";
+
+
 const Listcate = ({param}) => {
     console.log(param)
   return (

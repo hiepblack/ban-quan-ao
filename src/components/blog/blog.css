@@ -1,7 +1,7 @@
 .content_blog{
     display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-gap: 2rem;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 1.5rem;
     margin: 2rem auto;
     
 }

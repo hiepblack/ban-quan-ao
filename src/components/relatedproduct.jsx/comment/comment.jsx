@@ -1,45 +1,31 @@
 import React from "react";
 import "./comment.css";
-const Comment = () => {
+
+const Comment = ({ product, handlecomment, datacmt, setDataCmt }) => {
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    handlecomment();
+  };
+
   return (
     <div>
       <div className="comments">
-        <div class="comment">
-          <div className="comment__user">
-            <img src="https://i.imgur.com/CFpa3nK.jpg" alt="" />
-            <div className="comment__username">
-              <h4>Rob Simpson</h4>
-              <span>20 October, 2018</span>
+        {product?.comments?.map((item, index) => {
+          return (
+            <div class="comment" key={index}>
+              <div className="comment__user">
+                <img src={item.image} alt="" />
+                <div className="comment__username">
+                  <h4>{item.username}</h4>
+                  <span>{item.createdAt}</span>
+                </div>
+              </div>
+              <p className="commment__content">{item.textComment}</p>
             </div>
-          </div>
-          <p className="commment__content">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus
-            numquam assumenda hic aliquam vero sequi velit molestias doloremque
-            molestiae dicta?
-          </p>
-        </div>
-        <div class="comment">
-          <div className="comment__user">
-            <img
-              src="https://i.imgur.com/CFpa3nK.jpg"
-              alt=""
-              class="rounded-circle"
-              width="50"
-              height="50"
-            />
-            <div className="comment__username">
-              <h4>Rob Simpson</h4>
-              <span>20 October, 2018</span>
-            </div>
-          </div>
-          <p className="commment__content">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus
-            numquam assumenda hic aliquam vero sequi velit molestias doloremque
-            molestiae dicta?
-          </p>
-        </div>
-
-        <form action="">
+          );
+        })}
+        <form action="" onSubmit={handleClick}>
           <div className="form_comment">
             <p>Add a comment</p>
             <div className="form_comment__input">
@@ -50,9 +36,18 @@ const Comment = () => {
                 cols="60"
                 rows="5"
                 placeholder="Viết bình luận của bạn..."
+                value={datacmt.textComment}
+                onChange={(e) =>
+                  setDataCmt((pre) => {
+                    return {
+                      ...pre,
+                      textComment: e.target.value,
+                    };
+                  })
+                }
               ></textarea>
             </div>
-            <button>Bình Luận</button>
+            <button type="submit">Bình Luận</button>
           </div>
         </form>
       </div>
