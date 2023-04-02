@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./comment.css";
+import { AuthContext } from "../../../context/AuthContext";
 
 const Comment = ({ product, handlecomment, datacmt, setDataCmt }) => {
-
+  const { user } = useContext(AuthContext);
   const handleClick = (e) => {
     e.preventDefault();
     handlecomment();
@@ -35,8 +36,11 @@ const Comment = ({ product, handlecomment, datacmt, setDataCmt }) => {
                 id=""
                 cols="60"
                 rows="5"
-                placeholder="Viết bình luận của bạn..."
+                placeholder={`${
+                  user ? "Viết bình luận của bạn" : "Đăng nhập để bình luận"
+                }`}
                 value={datacmt.textComment}
+                readOnly={user ? false : true}
                 onChange={(e) =>
                   setDataCmt((pre) => {
                     return {
@@ -47,7 +51,9 @@ const Comment = ({ product, handlecomment, datacmt, setDataCmt }) => {
                 }
               ></textarea>
             </div>
-            <button type="submit">Bình Luận</button>
+            <button type="submit" disabled={user ? false : true}>
+              Bình Luận
+            </button>
           </div>
         </form>
       </div>

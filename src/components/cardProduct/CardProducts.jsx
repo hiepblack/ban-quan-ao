@@ -11,7 +11,7 @@ const CardProducts = ({ product }) => {
   const dispatch = useDispatch();
   const handleAdd = () => {
     const newProduct = {
-      _id: product.id,
+      _id: product._id,
       nameProduct: product.nameProduct,
       price: product.price,
       quantity: 1,

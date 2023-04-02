@@ -18,9 +18,40 @@ const Cart = () => {
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(infor);
+    const dataCartDetail = {
+      list: listCart,
+      price: allPrice,
+      quantity: totalQuantity,
+      discount: "khong",
+    };
+    const res = await fetch(`http://localhost:4000/orderdetail`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataCartDetail),
+    })
+    const data = await res.json();
+    const dataCart = {
+      username:infor.name,
+      oderdetailId:data.detail._id,
+      totalAmount:allPrice,
+      address:infor.location,
+      phone:infor.sdt,
+      note: "tạm thời",
+      orderstatus:"pending"
+    }
+    const resOrder = await fetch(`http://localhost:4000/order`,{
+      method:"POST",
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body:JSON.stringify(dataCart)
+    })
+    const order = await resOrder.json();
+    console.log(order);
   };
   const handleDelete = (id) => {
     const action = deleteCart(id);

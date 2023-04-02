@@ -12,10 +12,10 @@ export const cartSlice = createSlice({
   reducers: {
     addCart: (state, action) => {
       let tongtien = 0;
-      const findEx = state.value.find((item) => item.id === action.payload.id);
+      const findEx = state.value.find((item) => item._id === action.payload._id);
       if (findEx) {
         state.value = state.value.map((item) => {
-          return item.id === action.payload.id
+          return item._id === action.payload._id
             ? {
                 ...item,
                 quantity: item.quantity + action.payload.quantity,
@@ -34,10 +34,10 @@ export const cartSlice = createSlice({
     },
     updateCart: (state, action) => {
       let tongtien = 0;
-      const findEx = state.value.find((item) => item.id === action.payload.id);
+      const findEx = state.value.find((item) => item._id === action.payload._id);
       if (findEx) {
         state.value = state.value.map((item) => {
-          return item.id === action.payload.id
+          return item._id === action.payload._id
             ? {
                 ...item,
                 quantity: item.quantity + 1,
@@ -52,7 +52,7 @@ export const cartSlice = createSlice({
     },
     deleteCart: (state, action) => {
       let tongtien = 0;
-      state.value = state.value.filter((item) => item.id !== action.payload);
+      state.value = state.value.filter((item) => item._id !== action.payload);
       state.totalQuantity -= 1;
       state.value.forEach((item) => (tongtien += item.totalPrice));
       state.allPrice = tongtien;
@@ -60,10 +60,10 @@ export const cartSlice = createSlice({
     },
     deleteOneCart: (state, action) => {
       let tongtien = 0;
-      const findEx = state.value.find((item) => item.id === action.payload.id);
+      const findEx = state.value.find((item) => item._id === action.payload._id);
       if (findEx) {
         state.value = state.value.map((item) => {
-          return item.id === action.payload.id
+          return item._id === action.payload._id
             ? {
                 ...item,
                 quantity: item.quantity - 1,

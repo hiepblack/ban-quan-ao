@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./productdetailModel.css";
 import { AuthContext } from "../../context/AuthContext";
-import { dataProduct } from "../../data/data";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addCart } from "../../redux/cartSlice";

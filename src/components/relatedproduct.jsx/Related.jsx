@@ -9,6 +9,7 @@ import {toast} from "react-toastify"
 
 const Related = ({ product }) => {
   const { user } = useContext(AuthContext);
+  console.log(user);
   const [show, setShow] = useState(true);
   const [dataRelateProduct, setDataRelateProduct] = useState([]);
   const [datacmt, setDataCmt] = useState({
