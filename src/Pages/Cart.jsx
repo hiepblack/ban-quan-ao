@@ -3,7 +3,10 @@ import "../style/cart.css";
 import Title from "../components/title/Title";
 import CartModel from "../components/cartshop/CartModel";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteCart, updateCart, deleteOneCart } from "../redux/cartSlice";
+import { deleteCart, updateCart, deleteOneCart,deleteAllCart } from "../redux/cartSlice.js";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 
 const Cart = () => {
   const [infor, setInfor] = useState({
@@ -17,7 +20,7 @@ const Cart = () => {
   const allPrice = useSelector((state) => state.cart.allPrice);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const dataCartDetail = {
@@ -32,26 +35,33 @@ const Cart = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(dataCartDetail),
-    })
+    });
     const data = await res.json();
+    localStorage.setItem("order", JSON.stringify(data.detail));
     const dataCart = {
-      username:infor.name,
-      oderdetailId:data.detail._id,
-      totalAmount:allPrice,
-      address:infor.location,
-      phone:infor.sdt,
+      username: infor.name,
+      oderdetailId: data.detail._id,
+      totalAmount: allPrice,
+      address: infor.location,
+      phone: infor.sdt,
       note: "tạm thời",
-      orderstatus:"pending"
-    }
-    const resOrder = await fetch(`http://localhost:4000/order`,{
-      method:"POST",
-      headers:{
-        'Content-Type': 'application/json'
+      orderstatus: "pending",
+    };
+    const resOrder = await fetch(`http://localhost:4000/order`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      body:JSON.stringify(dataCart)
-    })
-    const order = await resOrder.json();
-    console.log(order);
+      body: JSON.stringify(dataCart),
+    });
+    const orderData = await resOrder.json();
+    if (orderData.success) {
+      toast.success("Đặt hàng thành công");
+      navigate("/");
+      
+      handleDeleteAll()
+    }
+    console.log(orderData);
   };
   const handleDelete = (id) => {
     const action = deleteCart(id);
@@ -65,6 +75,10 @@ const Cart = () => {
     const action = deleteOneCart(product);
     dispatch(action);
   };
+  const handleDeleteAll = ()=>{
+    const action = deleteAllCart(true);
+    dispatch(action);
+  }
   return (
     <>
       <section className="container shop__cart">
