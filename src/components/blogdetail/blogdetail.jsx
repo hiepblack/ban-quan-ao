@@ -1,6 +1,5 @@
 import "./blogdetail.css"
 import React from 'react'
-import Comment from "../relatedproduct.jsx/comment/comment"
 import Blogrelated from "./blogrelated/Blogrelated"
 
 const BlogdetailContent  = () => {
@@ -17,7 +16,7 @@ const BlogdetailContent  = () => {
             Cùng NEM điểm lại 5 thiết kế đầm hoa đặc sắc nhất - không thể thiếu trong tủ đồ các nàng mỗi dịp hè về. </p>
         </div>
         <div className="related">
-        <Comment/>
+          <div>comment</div>
         <Blogrelated/>
         </div>
     </div>

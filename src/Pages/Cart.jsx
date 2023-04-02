@@ -19,8 +19,10 @@ const Cart = () => {
   const listCart = useSelector((state) => state.cart.value);
   const allPrice = useSelector((state) => state.cart.allPrice);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const dataCartDetail = {
@@ -58,8 +60,7 @@ const Cart = () => {
     if (orderData.success) {
       toast.success("Đặt hàng thành công");
       navigate("/");
-      
-      handleDeleteAll()
+      handleDeleteAll();
     }
     console.log(orderData);
   };

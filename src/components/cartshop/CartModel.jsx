@@ -3,7 +3,7 @@ import "./cartmodel.css";
 
 const CartModel = ({ product,handleDelete,handincrement ,handdecrement}) => {
   const remove = () => {
-    handleDelete(product.id);
+    handleDelete(product._id);
   };
   const add = () => {
     handincrement(product);
