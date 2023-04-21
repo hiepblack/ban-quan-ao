@@ -3,8 +3,6 @@ import "./listproduct.css";
 import CardProducts from "../../cardProduct/CardProducts";
 
 const ListProduct = ({ data,handleFilter }) => {
-
-
   return (
     <div className="listproduct">
       <div className="listproduct__header">

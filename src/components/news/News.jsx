@@ -5,7 +5,7 @@ import CardNew from "../cardNews/CardNew";
 
 const News = () => {
   return (
-    <section className="container news">
+    <section className="container news" data-aos="fade-right">
       <Title name={"Tin tức thời trang"} desc={'Xu Hướng, Phong Cách Thời Trang Mới Nhất.'}/>
       <div className="news__box grid ">
         <CardNew/>

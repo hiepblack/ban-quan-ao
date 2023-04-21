@@ -1,4 +1,5 @@
 import "./App.css";
+import "aos/dist/aos.css";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import Client from "./layout/Client.jsx"

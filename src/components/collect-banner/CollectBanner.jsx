@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./collectbanner.css";
 import { Link } from "react-router-dom";
 import img1 from "../../assets/homepage_banner_box_1_image.webp";
 import img2 from "../../assets/homepage_banner_box_2_image.webp";
+import AOS from "aos";
 
 const CollectBanner = () => {
+ 
   return (
     <div className="collectbanner container">
-      <div className="collectbanner__box">
+      <div
+        className="collectbanner__box"
+        data-aos="fade-right"
+      >
         <div className="collectbanner__box__img">
           <img src={img1} alt="" />
         </div>
@@ -24,7 +29,7 @@ const CollectBanner = () => {
           </button>
         </div>
       </div>
-      <div className="collectbanner__box">
+      <div className="collectbanner__box" data-aos="fade-left">
         <div className="collectbanner__box__content">
           <p>BỘ SƯU TẬP HÈ 2022</p>
           <h2 className="title1">SWEET MOMENT</h2>

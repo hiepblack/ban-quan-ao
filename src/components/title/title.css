@@ -13,3 +13,14 @@
 .title p {
   font-size:var(--h3-font-size);
 }
+/* ======Breakpoints======= */
+@media screen and (max-width: 768px) {
+  .title p {
+    text-align: center;
+  }
+  .title__content {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 350px) {
+}

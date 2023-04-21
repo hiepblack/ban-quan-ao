@@ -11,11 +11,11 @@ const Products = ({ setToggleCart }) => {
 
   const handleFilter = async (condition) => {
     axios
-    .post(`http://localhost:4000/products/sort/?${condition}=1`)
-    .then(({ data }) => {
-      setData(data.products);
-      setLoading(true);
-    });
+      .post(`http://localhost:4000/products/sort/?${condition}=1`)
+      .then(({ data }) => {
+        setData(data.products);
+        setLoading(true);
+      });
   };
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Products = ({ setToggleCart }) => {
       <Banner param={"Trang Chủ / Bộ Sưu Tập"} title={"Bộ Sưu Tập"} />
       <section className="product container">
         <div className="product__container grid">
-          <FiterProduct setData={setData} />
+          <FiterProduct setData={setData} setLoading={setLoading}/>
           {loading ? (
             <ListProduct
               data={data}
@@ -38,7 +38,14 @@ const Products = ({ setToggleCart }) => {
               handleFilter={handleFilter}
             />
           ) : (
-            ""
+            <div className="product__loading">
+              <div class="lds-facebook">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              Loading...
+            </div>
           )}
         </div>
       </section>
