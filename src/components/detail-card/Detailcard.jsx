@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./detail.css";
+import ProductDetailsCarousel from "./ProductDetailCarousel";
 
 const Detailcard = ({ product, handleAddtoCart }) => {
   const [quantity, setQuantity] = useState(1);
@@ -34,18 +35,8 @@ const Detailcard = ({ product, handleAddtoCart }) => {
   return (
     <div className="container">
       <div className="container-detail">
-        <div className="image-product">
-          <div className="thumbnail">
-            <img src={product?.imgProduct[0]} alt="" />
-            <img src={product?.imgProduct[0]} alt="" />
-            <img src={product?.imgProduct[0]} alt="" />
-            {/* {product?.image.slideImage.map((img) => {
-              return ;
-            })} */}
-          </div>
-          <div className="large-image">
-            <img src={product?.imgProduct[0]} alt="" />
-          </div>
+        <div className="box__carousel">
+          <ProductDetailsCarousel product={product} />
         </div>
         <div className="detail-product">
           <div className="content-deltail">
@@ -57,9 +48,9 @@ const Detailcard = ({ product, handleAddtoCart }) => {
           <div>
             <p>Kích thước: {size}</p>
             <div className="product__model__color__input">
-              {product.size?.map((item) => {
+              {product.size?.map((item, index) => {
                 return (
-                  <div className="input__size">
+                  <div className="input__size" key={index}>
                     <input
                       type="checkbox"
                       id={`size${item}`}
@@ -73,10 +64,10 @@ const Detailcard = ({ product, handleAddtoCart }) => {
             </div>
             <p>Màu sắc: {color} </p>
             <div className="product__model__color__input">
-              {product.colors?.map((item) => {
+              {product.colors?.map((item, index) => {
                 return (
-                  <div className="input__size">
-                    <div className="box" style={{backgroundColor:`${item}`}}>
+                  <div className="input__size" key={index}>
+                    <div className="box" style={{ backgroundColor: `${item}` }}>
                       <input
                         type="radio"
                         id={`size${item}`}
@@ -87,7 +78,6 @@ const Detailcard = ({ product, handleAddtoCart }) => {
                       <label
                         className="box-lable"
                         htmlFor={`size${item}`}
-                        
                       ></label>
                     </div>
                   </div>

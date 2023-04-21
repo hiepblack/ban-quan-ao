@@ -6,11 +6,12 @@ import New_Product from "../components/newProduct/New_Product";
 import News from "../components/news/News";
 import CollectBanner from "../components/collect-banner/CollectBanner";
 import AOS from "aos";
+import { BASE_URL } from "../helper";
 
 const Home = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:4000/products/`).then(({ data }) => {
+    axios.get(`${BASE_URL}/products/`).then(({ data }) => {
       setData(data.products);
     });
     

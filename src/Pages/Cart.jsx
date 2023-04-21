@@ -3,10 +3,15 @@ import "../style/cart.css";
 import Title from "../components/title/Title";
 import CartModel from "../components/cartshop/CartModel";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteCart, updateCart, deleteOneCart,deleteAllCart } from "../redux/cartSlice.js";
+import {
+  deleteCart,
+  updateCart,
+  deleteOneCart,
+  deleteAllCart,
+} from "../redux/cartSlice.js";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import { BASE_URL } from "../helper";
 
 const Cart = () => {
   const [infor, setInfor] = useState({
@@ -25,13 +30,17 @@ const Cart = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!infor.name && !infor.email && !infor.sdt && !infor.location) {
+      toast.warning("Điền đầy đủ thông tin đặt hàng");
+      return;
+    }
     const dataCartDetail = {
       list: listCart,
       price: allPrice,
       quantity: totalQuantity,
       discount: "khong",
     };
-    const res = await fetch(`http://localhost:4000/orderdetail`, {
+    const res = await fetch(`${BASE_URL}/orderdetail`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +58,7 @@ const Cart = () => {
       note: "tạm thời",
       orderstatus: "pending",
     };
-    const resOrder = await fetch(`http://localhost:4000/order`, {
+    const resOrder = await fetch(`${BASE_URL}/order`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -62,7 +71,6 @@ const Cart = () => {
       navigate("/");
       handleDeleteAll();
     }
-    console.log(orderData);
   };
   const handleDelete = (id) => {
     const action = deleteCart(id);
@@ -76,10 +84,10 @@ const Cart = () => {
     const action = deleteOneCart(product);
     dispatch(action);
   };
-  const handleDeleteAll = ()=>{
+  const handleDeleteAll = () => {
     const action = deleteAllCart(true);
     dispatch(action);
-  }
+  };
   return (
     <>
       <section className="container shop__cart">

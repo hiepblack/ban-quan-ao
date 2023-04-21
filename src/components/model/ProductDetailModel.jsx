@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addCart } from "../../redux/cartSlice";
 import axios from "axios";
+import { toast } from "react-toastify";
+import {BASE_URL} from '../../helper'
 
 const ProductDetailModel = () => {
   const { openModelDetail, setOpenModelDetail, productId, setToggleCart } =
@@ -19,7 +21,7 @@ const ProductDetailModel = () => {
   useEffect(() => {
     const productDetail = async () => {
       await axios
-        .get(`http://localhost:4000/products/${productId}`)
+        .get(`${BASE_URL}/products/${productId}`)
         .then(({ data }) => setProductDetail(data.product));
     };
     productDetail()
@@ -36,10 +38,15 @@ const ProductDetailModel = () => {
       size: size,
       totalPrice: quantity * productDetail.price,
     };
+    if(!newProduct.colors || !newProduct.size){
+      toast.error('Size or Color not empty')
+      return
+    }
     const action = addCart(newProduct);
     dispatch(action);
     setToggleCart(true);
     setOpenModelDetail(false);
+    toast.success('Add product to Cart successfully')
   };
   const handleCheckboxSize = (e) => {
     if (e.target.checked) {

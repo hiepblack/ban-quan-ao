@@ -6,6 +6,7 @@ import "./related.css";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import {toast} from "react-toastify"
+import {BASE_URL} from '../../helper'
 
 const Related = ({ product }) => {
   const { user } = useContext(AuthContext);
@@ -21,7 +22,7 @@ const Related = ({ product }) => {
 
   useEffect(() => {
     const dataProduct = async () => {
-      await axios.get(`http://localhost:4000/products/`).then(({ data }) => {
+      await axios.get(`${BASE_URL}/products/`).then(({ data }) => {
         const datafilter = data.products.filter(
           (item) => item.categoryId._id === product.categoryId._id
         );
@@ -34,7 +35,7 @@ const Related = ({ product }) => {
 
   const handlecomment = async () => {
     console.log(datacmt);
-    const res = await fetch(`http://localhost:4000/comment/${product._id}`, {
+    const res = await fetch(`${BASE_URL}/comment/${product._id}`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -46,18 +47,6 @@ const Related = ({ product }) => {
       toast.success(data.message);
       product.comments.push(data.comment);
     }
-
-    console.log(data);
-    // await axios
-    //   .post(`http://localhost:4000/comment/${product._id}`, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     data: datacmt,
-    //   })
-    //   .then(({ data }) => {
-    //     console.log(data.comment);
-    //   });
     setDataCmt((pre) => {
       return {
         ...pre,

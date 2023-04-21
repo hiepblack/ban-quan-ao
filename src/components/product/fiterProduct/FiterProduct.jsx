@@ -4,6 +4,7 @@ import "./filterproduct.css";
 import FilterSize from "./FilterSize";
 import FilterCategory from "./FilterCategory";
 import axios from "axios";
+import {BASE_URL} from '../../../helper'
 
 const FiterProduct = ({ setData ,setLoading}) => {
   const [filter, setFilter] = useState({
@@ -15,7 +16,7 @@ const FiterProduct = ({ setData ,setLoading}) => {
     setLoading(false)
     axios
       .post(
-        `http://localhost:4000/products/filter/?size=${filter.size}&price=${filter.price}`
+        `${BASE_URL}/products/filter/?size=${filter.size}&price=${filter.price}`
       )
       .then(({ data }) => {
         setData(data.product);

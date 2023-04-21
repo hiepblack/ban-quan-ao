@@ -1,9 +1,9 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./header.css";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AuthContext } from "../../context/AuthContext";
-import {toast} from 'react-toastify'
+import { toast } from "react-toastify";
 
 const nav_Menu = [
   {
@@ -35,13 +35,13 @@ const nav_Menu = [
 
 const Header = () => {
   const navigate = useNavigate();
-  const { user, dispatch,setToggleCart } = useContext(AuthContext);
+  const { user, dispatch, setToggleCart } = useContext(AuthContext);
   const logout = () => {
     dispatch({ type: "LOGOUT" });
-    localStorage.removeItem('token');
-    toast.success('Bạn đã đăng xuất!',{
-      position:toast.POSITION.BOTTOM_RIGHT
-    })
+    localStorage.removeItem("token");
+    toast.success("Bạn đã đăng xuất!", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
     navigate("/");
   };
 
@@ -55,20 +55,19 @@ const Header = () => {
     } else {
       header.classList.remove("scroll-header");
     }
-
   });
   return (
     <header className="header">
       <nav className="nav container">
-        <Link to="#" className="nav__logo">
+        <Link to="/" className="nav__logo">
           HaHiep
         </Link>
         <div className={toggle ? "nav__menu show-menu" : "nav__menu"}>
           <ul className="nav__list grid">
-            {nav_Menu.map((item,index) => {
+            {nav_Menu.map((item, index) => {
               return (
                 <li className="nav__item" key={item.name}>
-                  <Link to={item.path} className="nav__link" >
+                  <Link to={item.path} className="nav__link">
                     <i className={item.icon}></i> {item.name}
                   </Link>
                 </li>
@@ -89,8 +88,8 @@ const Header = () => {
           {user ? (
             <div>
               <p>
-              {user.userName}
-              <i className="uil uil-signout" onClick={logout}></i>
+                {user.userName}
+                <i className="uil uil-signout" onClick={logout}></i>
               </p>
             </div>
           ) : (
@@ -109,7 +108,12 @@ const Header = () => {
             ></i>
           </div>
         </div>
-        <div className='nav__menu__icon' onClick={()=>{setToggle(true)}}>
+        <div
+          className="nav__menu__icon"
+          onClick={() => {
+            setToggle(true);
+          }}
+        >
           <i class="uil uil-align-justify nav__icon"></i>
         </div>
       </nav>

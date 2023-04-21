@@ -4,6 +4,7 @@ import FiterProduct from "../components/product/fiterProduct/FiterProduct";
 import ListProduct from "../components/product/listProduct/ListProduct";
 import "../style/product.css";
 import axios from "axios";
+import { BASE_URL } from "../helper";
 
 const Products = ({ setToggleCart }) => {
   const [data, setData] = useState([]);
@@ -11,7 +12,7 @@ const Products = ({ setToggleCart }) => {
 
   const handleFilter = async (condition) => {
     axios
-      .post(`http://localhost:4000/products/sort/?${condition}=1`)
+      .post(`${BASE_URL}/products/sort/?${condition}=1`)
       .then(({ data }) => {
         setData(data.products);
         setLoading(true);
@@ -19,7 +20,7 @@ const Products = ({ setToggleCart }) => {
   };
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/products/`).then(({ data }) => {
+    axios.get(`${BASE_URL}/products/`).then(({ data }) => {
       setData(data.products);
       setLoading(true);
     });
