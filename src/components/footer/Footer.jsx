@@ -1,5 +1,6 @@
 import React from "react";
 import "./footer.css";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="footer container">
@@ -35,18 +36,18 @@ const Footer = () => {
             <p>© 2022 - Bản quyền SpeedX. Cung cấp bởi Haravan</p>
           </div>
           <div className="footer__icon">
-            <a href="">
+            <Link to="">
               <i class="uil uil-twitter"></i>
-            </a>
-            <a href="">
+            </Link>
+            <Link to="">
               <i class="uil uil-instagram-alt"></i>
-            </a>
-            <a href="">
+            </Link>
+            <Link to="">
               <i class="uil uil-facebook"></i>
-            </a>
-            <a href="">
+            </Link>
+            <Link to="">
               <i class="uil uil-youtube"></i>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

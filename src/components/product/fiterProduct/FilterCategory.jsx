@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const FilterCategory = ({setCate}) => {
   const [toggleCate, setToggleCate] = useState(true);
@@ -20,24 +21,24 @@ const FilterCategory = ({setCate}) => {
       >
         <ul>
           <li>
-            <a href="">
+            <Link to="">
               <span className="check__mark">Khác</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="">
+            <Link to="">
               <span className="check__mark">Quần</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="">
+            <Link to="">
               <span className="check__mark">Áo</span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="">
+            <Link to="">
               <span className="check__mark">Váy</span>
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

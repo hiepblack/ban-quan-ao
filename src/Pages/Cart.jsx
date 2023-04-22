@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import { BASE_URL } from "../helper";
 
 const Cart = () => {
+  const [loading, setLoading] = useState(false);
   const [infor, setInfor] = useState({
     name: "",
     email: "",
@@ -34,6 +35,7 @@ const Cart = () => {
       toast.warning("Điền đầy đủ thông tin đặt hàng");
       return;
     }
+    setLoading(true);
     const dataCartDetail = {
       list: listCart,
       price: allPrice,
@@ -50,6 +52,7 @@ const Cart = () => {
     const data = await res.json();
     localStorage.setItem("order", JSON.stringify(data.detail));
     const dataCart = {
+      email: infor.email,
       username: infor.name,
       oderdetailId: data.detail._id,
       totalAmount: allPrice,
@@ -67,26 +70,31 @@ const Cart = () => {
     });
     const orderData = await resOrder.json();
     if (orderData.success) {
-      toast.success("Đặt hàng thành công");
-      setDone(true)
+      setLoading(false);
+      toast.success("Bạn Vui Lòng Kiểm tra Email");
+      setDone(true);
       setTimeout(() => {
         navigate("/");
-      },[3000])
+      }, [3000]);
       handleDeleteAll();
     }
   };
+
   const handleDelete = (id) => {
     const action = deleteCart(id);
     dispatch(action);
   };
+
   const handincrement = (product) => {
     const action = updateCart(product);
     dispatch(action);
   };
+
   const handdecrement = (product) => {
     const action = deleteOneCart(product);
     dispatch(action);
   };
+
   const handleDeleteAll = () => {
     const action = deleteAllCart(true);
     dispatch(action);
@@ -94,17 +102,14 @@ const Cart = () => {
   return (
     <>
       {done ? (
-       <section className="container shop__cart">
-       <div>
-         <Title
-           name={"Giỏ Hàng Của Bạn"}
-           desc={`Cảm ơn bạn đã đặt hàng`}
-         />
-       </div>
-       <div className="check__icon">
-        <i class='bx bx-check-circle'></i>
-       </div>
-       </section>
+        <section className="container shop__cart">
+          <div>
+            <Title name={"Giỏ Hàng Của Bạn"} desc={`Cảm ơn bạn đã đặt hàng`} />
+          </div>
+          <div className="check__icon">
+            <i class="bx bx-check-circle"></i>
+          </div>
+        </section>
       ) : (
         <>
           <section className="container shop__cart">
@@ -206,7 +211,9 @@ const Cart = () => {
                         <Link to="/product">
                           <button>Tiếp tục mua hàng</button>
                         </Link>
-                        <button type="submit">Thanh Toán</button>
+                        <button type="submit" disabled={loading}>
+                          Thanh Toán
+                        </button>
                       </div>
                     </form>
                   </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./collectbanner.css";
 import { Link } from "react-router-dom";
 import img1 from "../../assets/homepage_banner_box_1_image.webp";

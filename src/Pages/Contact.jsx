@@ -1,6 +1,5 @@
 import React from "react";
 import "../style/contact.css";
-import img from "../assets/pngtree-customer-contact-support-illustration-png-image_3510001.jpg";
 import Banner from "../components/banner/Banner";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Slide from "../components/slideshow/Slide";
-import Hot_Collect from "../components/hot-collects/Hot_Collect";
-import New_Product from "../components/newProduct/New_Product";
+import HotCollect from "../components/hot-collects/Hot_Collect";
+import NewProduct from "../components/newProduct/New_Product";
 import News from "../components/news/News";
 import CollectBanner from "../components/collect-banner/CollectBanner";
 import AOS from "aos";
@@ -27,8 +27,8 @@ const Home = () => {
   return (
     <>
       <Slide />
-      <Hot_Collect />
-      <New_Product data={data} />
+      <HotCollect />
+      <NewProduct data={data} />
       <CollectBanner />
       <News blog={blog}/>
     </>

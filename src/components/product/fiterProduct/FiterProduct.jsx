@@ -7,6 +7,7 @@ import axios from "axios";
 import {BASE_URL} from '../../../helper'
 
 const FiterProduct = ({ setData ,setLoading}) => {
+
   const [filter, setFilter] = useState({
     size: "",
     price: "",
@@ -23,6 +24,7 @@ const FiterProduct = ({ setData ,setLoading}) => {
         setLoading(true)
       });
   }, [filter]);
+  
   return (
     <div className="filter__container">
       <div className="filter__container__box">
