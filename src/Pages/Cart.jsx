@@ -9,7 +9,7 @@ import {
   deleteOneCart,
   deleteAllCart,
 } from "../redux/cartSlice.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../helper";
 
@@ -68,7 +68,10 @@ const Cart = () => {
     const orderData = await resOrder.json();
     if (orderData.success) {
       toast.success("Đặt hàng thành công");
-      navigate("/");
+      setDone(true)
+      setTimeout(() => {
+        navigate("/");
+      },[3000])
       handleDeleteAll();
     }
   };
@@ -90,113 +93,131 @@ const Cart = () => {
   };
   return (
     <>
-      <section className="container shop__cart">
-        <div>
-          <Title
-            name={"Giỏ Hàng Của Bạn"}
-            desc={`Có ${totalQuantity} sản phẩm trong giỏ hàng`}
-          />
-        </div>
-        <div className="shop__cart__body">
-          {listCart.length !== 0 ? (
-            <>
-              <div>
-                {listCart.map((product, index) => {
-                  return (
-                    <CartModel
-                      key={index}
-                      product={product}
-                      handleDelete={handleDelete}
-                      handincrement={handincrement}
-                      handdecrement={handdecrement}
-                    />
-                  );
-                })}
-              </div>
-              <div className="shop__cart__form">
-                <form action="" onSubmit={handleSubmit}>
-                  <div className="shop__cart__form_title">
-                    <p>Thông tin đặt hàng</p>
+      {done ? (
+       <section className="container shop__cart">
+       <div>
+         <Title
+           name={"Giỏ Hàng Của Bạn"}
+           desc={`Cảm ơn bạn đã đặt hàng`}
+         />
+       </div>
+       <div className="check__icon">
+        <i class='bx bx-check-circle'></i>
+       </div>
+       </section>
+      ) : (
+        <>
+          <section className="container shop__cart">
+            <div>
+              <Title
+                name={"Giỏ Hàng Của Bạn"}
+                desc={`Có ${totalQuantity} sản phẩm trong giỏ hàng`}
+              />
+            </div>
+            <div className="shop__cart__body">
+              {listCart.length !== 0 ? (
+                <>
+                  <div>
+                    {listCart.map((product, index) => {
+                      return (
+                        <CartModel
+                          key={index}
+                          product={product}
+                          handleDelete={handleDelete}
+                          handincrement={handincrement}
+                          handdecrement={handdecrement}
+                        />
+                      );
+                    })}
                   </div>
-                  <div className="shop__cart__form_input">
-                    <label htmlFor="name">Tên Khách hàng</label>
-                    <input
-                      type="text"
-                      placeholder="Name"
-                      value={infor.name}
-                      onChange={(e) => {
-                        setInfor((pre) => {
-                          return {
-                            ...pre,
-                            name: e.target.value,
-                          };
-                        });
-                      }}
-                    />
+                  <div className="shop__cart__form">
+                    <form action="" onSubmit={handleSubmit}>
+                      <div className="shop__cart__form_title">
+                        <p>Thông tin đặt hàng</p>
+                      </div>
+                      <div className="shop__cart__form_input">
+                        <label htmlFor="name">Tên Khách hàng</label>
+                        <input
+                          type="text"
+                          placeholder="Name"
+                          value={infor.name}
+                          onChange={(e) => {
+                            setInfor((pre) => {
+                              return {
+                                ...pre,
+                                name: e.target.value,
+                              };
+                            });
+                          }}
+                        />
+                      </div>
+                      <div className="shop__cart__form_input">
+                        <label htmlFor="name">Email</label>
+                        <input
+                          type="email"
+                          placeholder="Email"
+                          value={infor.email}
+                          onChange={(e) => {
+                            setInfor((pre) => {
+                              return {
+                                ...pre,
+                                email: e.target.value,
+                              };
+                            });
+                          }}
+                        />
+                      </div>
+                      <div className="shop__cart__form_input">
+                        <label htmlFor="name">Sđt</label>
+                        <input
+                          type="number"
+                          placeholder="Phone number"
+                          value={infor.sdt}
+                          onChange={(e) => {
+                            setInfor((pre) => {
+                              return {
+                                ...pre,
+                                sdt: e.target.value,
+                              };
+                            });
+                          }}
+                        />
+                      </div>
+                      <div className="shop__cart__form_input">
+                        <label htmlFor="name">Địa chỉ</label>
+                        <input
+                          type="text"
+                          placeholder="Location"
+                          value={infor.location}
+                          onChange={(e) => {
+                            setInfor((pre) => {
+                              return {
+                                ...pre,
+                                location: e.target.value,
+                              };
+                            });
+                          }}
+                        />
+                      </div>
+                      <div className="shop__cart__form_input">
+                        <p className="money">Tổng tiền: {allPrice}₫</p>
+                      </div>
+                      <div className="shop__cart__form__footer">
+                        <Link to="/product">
+                          <button>Tiếp tục mua hàng</button>
+                        </Link>
+                        <button type="submit">Thanh Toán</button>
+                      </div>
+                    </form>
                   </div>
-                  <div className="shop__cart__form_input">
-                    <label htmlFor="name">Email</label>
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      value={infor.email}
-                      onChange={(e) => {
-                        setInfor((pre) => {
-                          return {
-                            ...pre,
-                            email: e.target.value,
-                          };
-                        });
-                      }}
-                    />
-                  </div>
-                  <div className="shop__cart__form_input">
-                    <label htmlFor="name">Sđt</label>
-                    <input
-                      type="number"
-                      placeholder="Phone number"
-                      value={infor.sdt}
-                      onChange={(e) => {
-                        setInfor((pre) => {
-                          return {
-                            ...pre,
-                            sdt: e.target.value,
-                          };
-                        });
-                      }}
-                    />
-                  </div>
-                  <div className="shop__cart__form_input">
-                    <label htmlFor="name">Địa chỉ</label>
-                    <input
-                      type="text"
-                      placeholder="Location"
-                      value={infor.location}
-                      onChange={(e) => {
-                        setInfor((pre) => {
-                          return {
-                            ...pre,
-                            location: e.target.value,
-                          };
-                        });
-                      }}
-                    />
-                  </div>
-                  <div className="shop__cart__form_input">
-                    <p className="money">Tổng tiền: {allPrice}₫</p>
-                  </div>
-                  <div className="shop__cart__form__footer">
-                    <button>Tiếp tục mua hàng</button>
-                    <button type="submit">Thanh Toán</button>
-                  </div>
-                </form>
-              </div>
-            </>
-          ) : (
-            <div className="shop__cart__none">Không có sản phẩm</div>
-          )}
-        </div>
-      </section>
+                </>
+              ) : (
+                <div className="shop__cart__none">Không có sản phẩm</div>
+              )}
+            </div>
+          </section>
+        </>
+      )}
     </>
   );
 };

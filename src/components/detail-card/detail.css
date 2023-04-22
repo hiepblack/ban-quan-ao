@@ -163,8 +163,6 @@ input[type="radio"]:checked + label {
   .carousel .slide {
     margin-left: auto !important;
     margin-right: auto !important;
-  }
-  .slide {
     width: 0vw !important;
   }
 }

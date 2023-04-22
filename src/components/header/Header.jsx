@@ -35,7 +35,8 @@ const nav_Menu = [
 
 const Header = () => {
   const navigate = useNavigate();
-  const { user, dispatch, setToggleCart } = useContext(AuthContext);
+  const { user, dispatch, setToggleCart, setOpenModelSearch } =
+    useContext(AuthContext);
   const logout = () => {
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem("token");
@@ -58,10 +59,11 @@ const Header = () => {
   });
   return (
     <header className="header">
-      <nav className="nav container">
-        <Link to="/" className="nav__logo">
+      <nav className="nav">
+        <Link to="#" className="nav__logo">
           HaHiep
         </Link>
+
         <div className={toggle ? "nav__menu show-menu" : "nav__menu"}>
           <ul className="nav__list grid">
             {nav_Menu.map((item, index) => {
@@ -81,8 +83,13 @@ const Header = () => {
             }}
           ></i>
         </div>
+
         <div className="nav__right">
-          <div>
+          <div
+            onClick={() => {
+              setOpenModelSearch(true);
+            }}
+          >
             <i className="uil uil-search"></i>
           </div>
           {user ? (

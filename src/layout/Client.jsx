@@ -5,6 +5,7 @@ import Be_Header from "../components/be-header/Be_Header";
 import RouterClient from "../router/RouterClient";
 import CartModel from "../components/model/CartModel";
 import ProductDetailModel from "../components/model/ProductDetailModel";
+import Search from "../components/header/Search";
 
 
 const Client = () => {
@@ -16,6 +17,7 @@ const Client = () => {
       <Footer />
       <CartModel />
       <ProductDetailModel />
+      <Search />
     </div>
   );
 };

@@ -51,6 +51,7 @@ const AuthReducer = (state, action) => {
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducer, initial_state);
   const [openModelDetail, setOpenModelDetail] = useState(false);
+  const [openModelSearch, setOpenModelSearch] = useState(false);
   const [productId, setProductId] = useState(1);
   const [toggleCart, setToggleCart] = useState(false);
 
@@ -69,7 +70,9 @@ export const AuthContextProvider = ({ children }) => {
         setProductId,
         productId,
         toggleCart,
-        setToggleCart
+        setToggleCart,
+        setOpenModelSearch,
+        openModelSearch,
       }}
     >
       {children}

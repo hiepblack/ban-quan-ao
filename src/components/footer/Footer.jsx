@@ -2,8 +2,8 @@ import React from "react";
 import "./footer.css";
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="in__footer container">
+    <footer className="footer container">
+      <div className="in__footer ">
         <div>
           <h5 className="text-footer">Số ĐKKD 011111111</h5>
           <p>Địa chỉ: Phòng 23, tầng 10, Tòa nhà DPCH</p>

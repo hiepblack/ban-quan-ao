@@ -1,12 +1,15 @@
-.content_blog{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-gap: 1.5rem;
-    margin: 2rem auto;
-    
+.content_blog {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.5rem;
+  margin: 2rem auto;
 }
-@media screen and (max-width: 768px){
-    .content_blog{
-         grid-template-columns: repeat(1,1fr);
-    }
+.blog {
+  width: 1280px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 768px) {
+  .content_blog {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

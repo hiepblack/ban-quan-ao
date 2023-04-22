@@ -10,11 +10,14 @@ import { BASE_URL } from "../helper";
 
 const Home = () => {
   const [data, setData] = useState([]);
+  const [blog, setBlog] = useState([]);
   useEffect(() => {
     axios.get(`${BASE_URL}/products/`).then(({ data }) => {
       setData(data.products);
     });
-    
+    axios.get(`${BASE_URL}/blog/`).then(({ data }) => {
+      setBlog(data.blogs);
+    });
   }, []);
   window.addEventListener("scroll", function () {
       AOS.init({
@@ -27,7 +30,7 @@ const Home = () => {
       <Hot_Collect />
       <New_Product data={data} />
       <CollectBanner />
-      <News />
+      <News blog={blog}/>
     </>
   );
 };

@@ -2,6 +2,9 @@
   grid-template-columns: repeat(3, 1fr);
   margin-top: 2rem;
 }
+a{
+  color: #111;
+}
 /* ======Breakpoints======= */
 @media screen and (max-width: 768px) {
   .news__box {
