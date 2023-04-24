@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AuthContext } from "../../context/AuthContext";
 import { toast } from "react-toastify";
+import { googleLogout } from "@react-oauth/google";
 
 const nav_Menu = [
   {
@@ -40,6 +41,9 @@ const Header = () => {
   const logout = () => {
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem("token");
+    if (user?.verified_email) {
+      googleLogout();
+    }
     toast.success("Bạn đã đăng xuất!", {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
@@ -95,7 +99,7 @@ const Header = () => {
           {user ? (
             <div>
               <p>
-                {user.userName}
+                {user.userName || user.name}
                 <i className="uil uil-signout" onClick={logout}></i>
               </p>
             </div>

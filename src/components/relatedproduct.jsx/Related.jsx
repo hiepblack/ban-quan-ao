@@ -5,8 +5,8 @@ import Description from "./description/description";
 import "./related.css";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
-import {toast} from "react-toastify"
-import {BASE_URL} from '../../helper'
+import { toast } from "react-toastify";
+import { BASE_URL } from "../../helper";
 
 const Related = ({ product }) => {
   const { user } = useContext(AuthContext);
@@ -23,10 +23,17 @@ const Related = ({ product }) => {
   useEffect(() => {
     const dataProduct = async () => {
       await axios.get(`${BASE_URL}/products/`).then(({ data }) => {
-        const datafilter = data.products.filter(
+        const datafilter = data.products.docs.filter(
           (item) => item.categoryId._id === product.categoryId._id
         );
-        setDataRelateProduct(datafilter);
+        console.log(product.categoryId._id);
+        let datafilterProducts = [];
+        datafilter.forEach((item) => {
+          if (item._id !== product._id) {
+            datafilterProducts.push(item);
+          }
+        });
+        setDataRelateProduct(datafilterProducts);
       });
     };
     dataProduct();
@@ -36,14 +43,14 @@ const Related = ({ product }) => {
   const handlecomment = async () => {
     console.log(datacmt);
     const res = await fetch(`${BASE_URL}/comment/${product._id}`, {
-      method: 'POST',
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(datacmt),
     });
     const data = await res.json();
-    if(data.successfull){
+    if (data.successfull) {
       toast.success(data.message);
       product.comments.push(data.comment);
     }

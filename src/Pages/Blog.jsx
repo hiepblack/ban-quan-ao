@@ -4,6 +4,7 @@ import BlogContent from "../components/blog/Blog";
 import Listcate from "../components/blog/Listcate";
 import axios from "axios";
 import { BASE_URL } from "../helper";
+import Paginate from "../components/paginate/Paginate";
 
 const Blog = () => {
   const [blogs, setBlogs] = useState([]);

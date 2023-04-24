@@ -2,7 +2,7 @@ import React from "react";
 import "./sigin.css";
 import { Link } from "react-router-dom";
 
-const Siginmain = ({ data, setData,handleClick }) => {
+const Siginmain = ({ data, setData, handleClick, login }) => {
   return (
     <section className="container signin">
       <form className="form_login" onSubmit={handleClick}>
@@ -36,11 +36,15 @@ const Siginmain = ({ data, setData,handleClick }) => {
         </div>
 
         <div className="btn-sumbit">
+          <button type="button" className="up" onClick={login}>
+            Sign in with Google 🚀
+          </button>
           <button type="submit" className="up">
             Đăng nhập
           </button>
         </div>
       </form>
+
       <div className="create-account-wrap">
         <span>Bạn chưa có tài khoản ?</span>
         <Link to={"/signup"}>Đăng Kí</Link>
