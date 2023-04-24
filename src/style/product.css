@@ -105,6 +105,11 @@
   left: 56px;
   animation-delay: 0;
 }
+.product__paginate{
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
 @keyframes lds-facebook {
   0% {
     top: 8px;

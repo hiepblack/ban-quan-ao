@@ -18,6 +18,7 @@ const Blog = () => {
     axios.get(`${BASE_URL}/cateblog/`).then(({ data }) => {
       setCategoryBlog(data.cates);
     });
+    window.scrollTo(0, 0);
   }, []);
   const handleBlog = (id) => {
     setLoading(false);

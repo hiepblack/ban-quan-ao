@@ -12,8 +12,8 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [blog, setBlog] = useState([]);
   useEffect(() => {
-    axios.get(`${BASE_URL}/products/`).then(({ data }) => {
-      setData(data.products);
+    axios.get(`${BASE_URL}/products/?limit=10`).then(({ data }) => {
+      setData(data.products.docs);
     });
     axios.get(`${BASE_URL}/blog/`).then(({ data }) => {
       setBlog(data.blogs);

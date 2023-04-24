@@ -2,18 +2,32 @@ import React from "react";
 import "./listproduct.css";
 import CardProducts from "../../cardProduct/CardProducts";
 
-const ListProduct = ({ data,handleFilter }) => {
+const ListProduct = ({ data, handleFilter }) => {
+  
   return (
     <div className="listproduct">
       <div className="listproduct__header">
         <p>{data.length} sản phẩm</p>
         <div className="listproduct__header__filter">
           <p>Lọc</p>
-          <select name="" onChange={(e)=>{handleFilter(e.target.value);}} className="listproduct__header__select">
-            <option value="nameAz">Theo tên A-Z</option>
-            <option value="nameZa">Theo tên Z-A</option>
-            <option value="priceAz">Theo giá tăng dần</option>
-            <option value="priceZa">Theo giá giảm dần</option>
+          <select
+            onChange={(e) => {
+              handleFilter(e.target.value);
+            }}
+            className="listproduct__header__select"
+          >
+            <option value='nameProduct-asc'>
+              Theo tên A-Z
+            </option>
+            <option value='nameProduct-desc'>
+              Theo tên Z-A
+            </option>
+            <option value='price-desc'>
+              Theo giá tăng dần
+            </option>
+            <option value='price-asc'>
+              Theo giá giảm dần
+            </option>
           </select>
         </div>
       </div>

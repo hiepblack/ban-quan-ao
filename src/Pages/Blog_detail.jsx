@@ -16,10 +16,11 @@ const Blogdetail = () => {
       setBlogDetail(data.blog)
       console.log(data.blog);
     });
+    window.scrollTo(0, 0);
   }, [id]);
   const data = {
-    namePage:'BlogDetail',
-    url:'/blogDetail',
+    namePage:'Blog',
+    url:'/blog',
     blog: blogDetail.title
   }
   
