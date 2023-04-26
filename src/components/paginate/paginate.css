@@ -1,0 +1,15 @@
+.paginate{
+    width: 7rem;
+    column-gap: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+.paginate li{
+    padding:0.5rem;
+    border:1px solid #111;
+    text-align:center;
+    cursor: pointer;
+}
+.checked{
+    background-color:antiquewhite;
+}

@@ -20,8 +20,8 @@ const RouterClient = () => {
       <Route path="/signin" element={<Sigin />} />
       <Route path="/signup" element={<Sigup />} />
       <Route path="/productdetail/:id" element={<ProductdetailPage />} />
-      <Route path="/blogdetail" element={<Blogdetail/>} />
-      <Route path="/cart" element={<Cart/>} />
+      <Route path="/blogdetail/:id" element={<Blogdetail />} />
+      <Route path="/cart" element={<Cart />} />
     </Routes>
   );
 };

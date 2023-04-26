@@ -4,7 +4,6 @@
 }
 @media screen and (max-with:764px){
     .blog_related{
-        
         grid-template-columns: repeat(1,1fr);
     }
 }

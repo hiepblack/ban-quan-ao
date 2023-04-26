@@ -8,6 +8,7 @@ import axios from "axios";
 import Detailcard from "../components/detail-card/Detailcard";
 import Related from "../components/relatedproduct.jsx/Related";
 import Banner from "../components/banner/Banner";
+import { BASE_URL } from "../helper";
 
 const ProductdetailPage = () => {
   const { setToggleCart } = useContext(AuthContext);
@@ -18,7 +19,7 @@ const ProductdetailPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/products/${id}`)
+      .get(`${BASE_URL}/products/${id}`)
       .then(({ data }) => {
         setProduct(data.product)
         setLoading(false);

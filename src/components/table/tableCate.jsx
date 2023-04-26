@@ -25,6 +25,7 @@ const columns = [
 
 
 
+
 const TableCate = (props) => {
   const [data,setcates] = useState([])
   useEffect(()=>{

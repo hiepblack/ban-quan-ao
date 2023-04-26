@@ -1,21 +1,29 @@
-import React from 'react'
-import "./listcate.css"
+import React from "react";
+import "./listcate.css";
 
-
-const Listcate = ({param}) => {
-    console.log(param)
+const Listcate = ({ categoryBlog,handleBlog }) => {
+  const newCategory = categoryBlog.slice(1);
+  const handleChange = (id) => {
+    handleBlog(id)
+  }
   return (
-    <div className='list_categorys container'>
-        <div><strong>Xem tất cả bài viết với tag:</strong></div>
-        <div>
-            <ul>
-                 {param.map((cate)=>{
-                    return(<li><button className='cate'>{cate}</button></li>)
-                 })}
-            </ul> 
-        </div>
+    <div className="list_categorys container">
+      <div>
+        <strong>Xem tất cả bài viết với tag:</strong>
+      </div>
+      <div>
+        <ul>
+          {newCategory?.map((cate) => {
+            return (
+              <li key={cate._id}>
+                <button onClick={() =>handleChange(cate._id)}>{cate.namecateBlog}</button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Listcate
+export default Listcate;

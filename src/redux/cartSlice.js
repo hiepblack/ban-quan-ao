@@ -76,9 +76,16 @@ export const cartSlice = createSlice({
       state.allPrice = tongtien;
       localStorage.setItem("cart", JSON.stringify(state.value));
     },
+    deleteAllCart:(state,action)=>{
+      if(action.payload){
+        state.value = [];
+        state.allPrice = 0;
+        state.totalQuantity = 0;
+      }
+    }
   },
 });
 
 const { actions, reducer } = cartSlice;
-export const { addCart, deleteCart, updateCart, deleteOneCart } = actions;
+export const { addCart, deleteCart, updateCart, deleteOneCart,deleteAllCart } = actions;
 export default reducer;

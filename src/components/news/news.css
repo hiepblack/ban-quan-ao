@@ -2,10 +2,13 @@
   grid-template-columns: repeat(3, 1fr);
   margin-top: 2rem;
 }
+a{
+  color: #111;
+}
 /* ======Breakpoints======= */
 @media screen and (max-width: 768px) {
   .news__box {
-    grid-template-columns: max-content;
+    grid-template-columns: repeat(1,1fr);
   }
 }
 @media screen and (max-width: 350px) {

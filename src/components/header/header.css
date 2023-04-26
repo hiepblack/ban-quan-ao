@@ -1,22 +1,17 @@
 .header {
   width: 100%;
   position: fixed;
-  top: 2.75rem;
+  top: 2rem;
   left: 0;
   z-index: var(--z-fixed);
   background-color: var(--body-color);
-  transition: 0.2s;
+  transition: all 0.5s;
 }
 .nav {
   height: calc(var(--header-height) + 1.5rem);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  column-gap: 1rem;
-}
-.scroll-header {
-  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
-  top: 0;
 }
 .nav__logo,
 .nav__toggle {
@@ -45,10 +40,10 @@
   margin: 0 0.5rem;
   cursor: pointer;
 }
-.nav__right__bag{
+.nav__right__bag {
   position: relative;
 }
-.totalProduct{
+.totalProduct {
   position: absolute;
   font-size: var(--small-font-size);
   right: 0;
@@ -57,10 +52,9 @@
   height: 1rem;
   line-height: 1rem;
   text-align: center;
-  border-radius:50%;
+  border-radius: 50%;
   background-color: var(--title-color);
   color: white;
-  
 }
 .nav__close,
 .nav__toggle,
@@ -107,7 +101,7 @@
   align-items: center;
   border-bottom: 1px solid var(--title-color);
 }
-.nav__shop__cartshop{
+.nav__shop__cartshop {
   margin-left: 0.5rem;
   text-decoration: underline;
   cursor: pointer;
@@ -127,7 +121,6 @@
   cursor: pointer;
   font-weight: var(--font-medium);
 }
-
 .nav__shop__header p span i {
   font-size: var(--h2-font-size);
   margin: 0 0 1rem;
@@ -135,15 +128,19 @@
 /* change background header */
 .scroll-header {
   box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+  top: 0;
 }
 .show__nav__shop {
   opacity: 1;
   visibility: visible;
 }
+/* search input */
+
 /* ======Breakpoints======= */
 @media screen and (max-width: 768px) {
   .header {
     top: 0;
+    width: 390px;
   }
   .nav {
     height: var(--header-height);
@@ -205,7 +202,7 @@
     padding: 0 0.25rem;
     font-size: 1.25rem;
   }
-  .totalProduct{
+  .totalProduct {
     right: 4px;
   }
 }

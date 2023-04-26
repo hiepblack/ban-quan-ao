@@ -1,6 +1,5 @@
 .cardNew {
   width: 100%;
-
   padding: 1rem;
 }
 .cardNew__header  {
@@ -33,4 +32,10 @@
   width: 100%;
   border-radius: 0.5rem;
   transform: scale(1.5);
+}
+
+@media screen and (max-width: 768px) {
+  .cardNew {
+    width: 90%;
+  }
 }

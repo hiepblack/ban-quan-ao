@@ -13,6 +13,3 @@
 .list_categorys div ul li button{
     background-color:transparent;
 }
-.list_categorys div ul li :hover{
-    background-color: #eee;
-}

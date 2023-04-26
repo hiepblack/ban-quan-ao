@@ -1,0 +1,18 @@
+.breadcrumb_ul{
+    display: flex;
+    column-gap: 1rem;
+    padding:0.5rem 0.5rem;
+    align-items: center;
+}
+.breadcrumb_ul li{
+    display: flex;
+    column-gap: 1rem;
+    padding:0.5rem 0;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .breadcrumb_ul{
+        justify-content: center;
+    }
+}

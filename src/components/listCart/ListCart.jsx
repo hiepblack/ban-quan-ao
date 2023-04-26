@@ -12,6 +12,7 @@ const ListCart = () => {
   const dispatch = useDispatch();
 
   const handleDelete = (id) => {
+    console.log(id);
     const action = deleteCart(id);
     dispatch(action);
   };

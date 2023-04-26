@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 
-const FilterSize = ({ setSize }) => {
+const FilterSize = ({setFilter,filter}) => {
   const [toggleSize, setToggleSize] = useState(true);
   const size = ["M", "L", "XL"];
 
   const handleclick = (e) => {
-      setSize(e.target.value)
+      setFilter(pre=>{
+        return {
+          ...pre,
+          size:e.target.value
+        }
+      })
+      
   }
   return (
     <div className="filter__size">

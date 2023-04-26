@@ -1,9 +1,11 @@
 import React, { useState, useContext } from "react";
 import Siginmain from "../components/sigin/Siginmain";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { AuthContext } from "../context/AuthContext";
 import { BASE_URL } from "../helper";
+import { useGoogleLogin } from "@react-oauth/google";
+import axios from "axios";
 
 const Sigin = () => {
   const [data, setData] = useState({
@@ -13,6 +15,30 @@ const Sigin = () => {
 
   const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
+  // login with google
+  const login = useGoogleLogin({
+    onSuccess: (codeResponse) => {
+      axios
+      .get(
+        `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${codeResponse.access_token}`,
+        {
+          headers: {
+            Authorization: `Bearer ${codeResponse.access_token}`,
+            Accept: "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+        navigate('/')
+        toast.success('Đăng nhập thành công',{
+          position: toast.POSITION.BOTTOM_RIGHT,
+          className: 'foo-bar'
+        });
+      })
+    },
+    onError: (error) => console.log("Login Failed:", error),
+  });
 
   const handleClick = async (e) => {
     console.log('abc');
@@ -27,7 +53,6 @@ const Sigin = () => {
         body: JSON.stringify(data),
       });
       const result = await res.json();
-      console.log(result);
       if (!res.ok) return toast.warn(result.message);
       localStorage.setItem("token", result.accessToken);
       toast.success(result.message,{
@@ -42,7 +67,7 @@ const Sigin = () => {
   };
   return (
     <>
-      <Siginmain setData={setData} data={data} handleClick={handleClick}/>
+      <Siginmain setData={setData} data={data} handleClick={handleClick} login={login}/>
     </>
   );
 };

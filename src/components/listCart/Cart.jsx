@@ -4,7 +4,7 @@ const Cart = ({ item, handleDelete, handincrement, handdecrement }) => {
 
   const {nameProduct,imgProduct,quantity,price,totalPrice} = item;
   const remove = () => {
-    handleDelete(item.id);
+    handleDelete(item._id);
   };
   const add = () => {
     handincrement(item);

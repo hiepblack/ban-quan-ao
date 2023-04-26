@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import ListCart from "../listCart/ListCart";
 import { AuthContext } from "../../context/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
 const CartModel = () => {
   const { toggleCart, setToggleCart } = useContext(AuthContext);
