@@ -8,21 +8,34 @@ import {
   Upload,
 } from 'antd';
 import { useEffect, useState } from 'react';
+import { uploadImage } from '../../api/uploadimg';
+
+
 const { TextArea } = Input;
-const normFile = (e) => {
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
-const Formproduct = () => {
+const Formproduct = (props) => {
   const [fileList, setFileList] = useState([]);
   const[cate,setcate]= useState([]);
   useEffect(()=>{
-    setcate()
-  },[])
-  const onHandleSubmit = ()=>{
-    
+    setcate(props.cates)
+  },[props])
+  const onHandleSubmit = async (value)=>{
+    const size = value.size.split(",")
+    const colors = value.colors.split(",")
+    const listImage = fileList.map((item)=>item.originFileObj);
+    console.log(listImage);
+    const img = await uploadImage(listImage);
+    const newproduct = {
+      nameProduct:value.nameProduct,
+      price:value.price,
+      size:size,
+      quantity:value.quantity,
+      colors:colors,
+      description:value.description,
+      brand:value.brand,
+      categoryId:value.categoryId,
+      imgProduct:img
+    }
+    props.onAdd(newproduct)
   }
   return (
     <>
@@ -40,28 +53,32 @@ const Formproduct = () => {
         }}
         onFinish={onHandleSubmit}
       >
-        <Form.Item label="Tên sản phẩm">
+        <Form.Item label="Tên sản phẩm" name="nameProduct">
           <Input />
         </Form.Item>
-        <Form.Item label="Giá">
+        <Form.Item label="Giá" name="price">
           <Input type='number' />
         </Form.Item>
-        <Form.Item label="Danh mục">
+        <Form.Item label="Danh mục" name="categoryId">
           <Select>
-            <Select.Option value="demo">Demo</Select.Option>
+          {cate.map((item)=>{
+            return(<Select.Option value={item._id}>{item.nameCategory}</Select.Option>)
+          })}
           </Select>
         </Form.Item>
-        <Form.Item label="Size">
-          <Select>
-            <Select.Option value="demo">Size</Select.Option>
-          </Select>
+        <Form.Item label="Size" name="size">
+        <Input/>
         </Form.Item>
-        <Form.Item label="Màu">
-          <Select>
-            <Select.Option value="demo">Color</Select.Option>
-          </Select>
+        <Form.Item label="Màu" name="colors">
+          <Input />
         </Form.Item>
-        <Form.Item label="Giới thiệu" style={{paddingRight:"10px"}}>
+        <Form.Item label="Hãng" name="brand">
+          <Input />
+        </Form.Item>
+        <Form.Item label="Số Lượng" name="quantity">
+          <Input type='number'/>
+        </Form.Item>
+        <Form.Item label="Giới thiệu" style={{paddingRight:"10px"}} name="description">
           <TextArea rows={4} />
         </Form.Item>
         <Form.Item label="Upload" valuePropName="fileList" rules={[{ required: true }]}>

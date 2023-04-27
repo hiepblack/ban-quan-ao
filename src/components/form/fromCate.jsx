@@ -7,15 +7,10 @@ import {
   Select,
   Upload,
 } from 'antd';
-import { useState } from 'react';
-const { TextArea } = Input;
-const normFile = (e) => {
-  if (Array.isArray(e)) {
-    return e;
+const Formcate = (props) => {
+  const onHandleSubmit =(value)=>{
+      props.onAddCate(value)
   }
-  return e?.fileList;
-};
-const Formcate = () => {
   return (
     <>
 
@@ -30,8 +25,9 @@ const Formcate = () => {
         style={{
           maxWidth: 600,
         }}
+        onFinish={onHandleSubmit}
       >
-        <Form.Item label="Tên Danh mục">
+        <Form.Item label="Tên Danh mục" name="nameCategory">
           <Input />
         </Form.Item>
       <Form.Item label="Xác nhận">
