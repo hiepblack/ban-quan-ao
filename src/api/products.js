@@ -5,8 +5,8 @@ export const getAll = () => {
 export const addnewProduct = (data) => {
   return instance.post("products", data);
 };
-export const updateProduct = (data) => {
-  return instance.post("products/" + data.id, data);
+export const updateProduct = (data, id) => {
+  return instance.put("products/" + id, data);
 };
 export const updateProductstatus = (data) => {
   return instance.patch("products/" + data.id, data);

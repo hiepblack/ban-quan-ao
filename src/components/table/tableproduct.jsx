@@ -1,5 +1,6 @@
  import { Space, Table, Tag ,Image,Button,Popconfirm} from 'antd';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { updateProductstatus } from '../../api/products';
 import Recycle from '../recyclebin/recyclebin';
 
@@ -44,7 +45,7 @@ const TableProduct = (props) => {
       key: 'action',
       render: (_, record) => (
         <Space size="middle">
-          <Button onClick={()=>nextpage(record._id)}>Update</Button>
+          <Button onClick={()=>nextpage(record._id)}>Cập nhật</Button>
       <Popconfirm
         title="Bạn có chắc muốn xóa sản phẩm này?"
         onConfirm={()=>recyclebin(record._id)}
@@ -65,8 +66,9 @@ const TableProduct = (props) => {
     }
     props.onStatus(spam)
   }
+  const naviagte = useNavigate()
   const nextpage =(id)=>{
-
+      naviagte(""+id)
   }
   useEffect(()=>{
     const product = props.products.filter((item)=>item.status!=="fales")

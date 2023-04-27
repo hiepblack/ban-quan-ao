@@ -1,35 +1,40 @@
-import { Space, Table, Tag } from 'antd';
+import { Space, Table, Tag,Button } from 'antd';
 import { useEffect, useState } from 'react';
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'nameCategory',
-    key: 'name'
-  },
-  {
-    title: 'Số Lượng sản phẩm',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    render: (_, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
-  },
-];
+import { useNavigate } from 'react-router-dom';
+
 
 
 const TableCate = (props) => {
+  const columns = [
+    {
+      title: 'Name',
+      dataIndex: 'nameCategory',
+      key: 'name'
+    },
+    {
+      title: 'Số Lượng sản phẩm',
+      dataIndex: 'age',
+      key: 'age',
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (_, record) => (
+        <Space size="middle">
+          <Button onClick={()=>nextpage(record._id)}>Cập nhật</Button>
+          <a>Delete</a>
+        </Space>
+      ),
+    },
+  ];
   const [data,setcates] = useState([])
+  const naviagte = useNavigate()
+  const nextpage =(id)=>{
+    naviagte(""+id)
+}
   useEffect(()=>{
     setcates(props.cates)
   },[props])
-  console.log(data)
   return(
     <Table style={{width:"full", paddingRight:"15px"}} columns={columns} dataSource={data} />
   )
