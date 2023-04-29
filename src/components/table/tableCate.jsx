@@ -21,6 +21,7 @@ const TableCate = (props) => {
     },
     {
       title: 'Action',
+      
       key: 'action',
       render: (_, record) => (
         <Space size="middle">
