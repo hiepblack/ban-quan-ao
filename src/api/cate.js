@@ -8,6 +8,6 @@ export const addnewcate = (cate) => {
 export const updatecate = (cate, id) => {
   return instance.put(`category/` + id, cate);
 };
-export const deletecate = () => {
-  return instance.delete("category");
+export const deletecate = (id) => {
+  return instance.delete("category/" + id);
 };

@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 
 const TableCate = (props) => {
+  const onRemove =(id)=>{
+    props.onRemoveCate(id)
+  }
   const columns = [
     {
       title: 'Name',
@@ -22,7 +25,7 @@ const TableCate = (props) => {
       render: (_, record) => (
         <Space size="middle">
           <Button onClick={()=>nextpage(record._id)}>Cập nhật</Button>
-          <a>Delete</a>
+          <Button onClick={()=>onRemove(record._id)}>Xóa</Button>
         </Space>
       ),
     },

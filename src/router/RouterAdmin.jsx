@@ -6,7 +6,7 @@ import TableCate from "../components/table/tableCate";
 import Formproduct from "../components/form/formProduct";
 import Formcate from "../components/form/fromCate";
 import { addnewProduct, getAll, updateProduct, updateProductstatus } from "../api/products";
-import { addnewcate, getAllcate, updatecate } from "../api/cate";
+import { addnewcate, deletecate, getAllcate, updatecate } from "../api/cate";
 import {message} from 'antd'
 import UpdateProduct from "../components/form/updateproduct";
 import UpdateCate from "../components/form/updateCate";
@@ -64,6 +64,13 @@ const RouterAdmin = () => {
     message.success("Thêm Thành công!");
     navigate("/admin/cateManager")
   }
+  const onRemoveCate = (id)=>{
+    deletecate(id).then(()=>{
+      getAll().then(({data})=>setproducts(data.products.docs));
+      getAllcate().then(({data})=>setcates(data.cates));
+    })
+    message.success("Thành công")
+  }
   return (
     <Routes>
         <Route path="/"element={<AdminLayout/>}>
@@ -71,9 +78,9 @@ const RouterAdmin = () => {
             <Route path="productManager" element={<TableProduct products={products} onStatus={onStatus}/>}/>
             <Route path="addNewProduct" element={<Formproduct onAdd={onAdd} cates={cates}/>}/>
             <Route path="productManager/:id" element={<UpdateProduct products={products} onUpdate={onUpdate} cates={cates}/>}/>
-            <Route path="cateManager" element={<TableCate cates={cates} />}/>
+            <Route path="cateManager" element={<TableCate cates={cates} onRemoveCate={onRemoveCate }/>}/>
             <Route path="addNewCate" element={<Formcate onAddCate={onAddCate}/>}/>
-            <Route path="cateManager/:id" element={<UpdateCate cates={cates} onUpdateCate={onUpdateCate}/>}/>
+            <Route path="cateManager/:id" element={<UpdateCate cates={cates} onUpdateCate={onUpdateCate} />}/>
         </Route>
     </Routes>
   )
