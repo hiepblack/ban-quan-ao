@@ -11,13 +11,19 @@ import {message} from 'antd'
 import UpdateProduct from "../components/form/updateproduct";
 import UpdateCate from "../components/form/updateCate";
 import Dashboard from "../components/dashboard/dashboard";
+import { getAllod } from "../api/order";
+import { getAlluser } from "../api/user";
 const RouterAdmin = () => {
   const [products,setproducts] = useState([]);
   const [cates,setcates] = useState([]);
+  const [users,setuser] = useState([]);
+  const [order,setorder] =useState([]);
   const navigate = useNavigate()
   useEffect(()=>{
     getAll().then(({data})=>setproducts(data.products.docs));
     getAllcate().then(({data})=>setcates(data.cates));
+    getAllod().then(({data})=>setorder(data.order));
+    getAlluser().then(({data})=>setuser(data.users));
   },[])
   const onAdd = (product) =>{
     addnewProduct(product).then(()=>{
@@ -61,7 +67,7 @@ const RouterAdmin = () => {
   return (
     <Routes>
         <Route path="/"element={<AdminLayout/>}>
-            <Route path="" index element={<Dashboard products={products} cates={cates}/>}/>
+            <Route path="" index element={<Dashboard products={products} cates={cates} users={users} order={order}/>}/>
             <Route path="productManager" element={<TableProduct products={products} onStatus={onStatus}/>}/>
             <Route path="addNewProduct" element={<Formproduct onAdd={onAdd} cates={cates}/>}/>
             <Route path="productManager/:id" element={<UpdateProduct products={products} onUpdate={onUpdate} cates={cates}/>}/>

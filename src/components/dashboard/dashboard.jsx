@@ -37,7 +37,7 @@ const Dashboard = (props) => {
 				</div>
 				
 				<div class="box-content">
-					<span class="big">18</span>
+					<span class="big">{props.users.length}</span>
 					Thành viên
 				</div>
 			</div>
@@ -48,7 +48,7 @@ const Dashboard = (props) => {
 				</div>
 				
 				<div class="box-content">
-					<span class="big">24</span>
+					<span class="big">{props.order.length}</span>
 					Số lượng Đơn hàng
 				</div>
 			</div>
