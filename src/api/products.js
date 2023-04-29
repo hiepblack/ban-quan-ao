@@ -1,6 +1,6 @@
 import instance from "./instance";
 export const getAll = () => {
-  return instance.get("products");
+  return instance.get("products/?limit=10000");
 };
 export const addnewProduct = (data) => {
   return instance.post("products", data);
