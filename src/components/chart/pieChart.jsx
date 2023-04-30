@@ -53,12 +53,16 @@ const PieChart = () => {
         ],
     };
     const options = {
+        responsive: true,
+        maintainAspectRatio: false,
         aspectRatio: 1,
-        maintainAspectRatio: true,
+        width: 60,
+        height: 60
+
     };
   return (
     <div>
-      <Pie data={data} options={options} />
+      <Pie style={{width:"50px", height:"50px"}} data={data} options={options} />
     </div>
   );
 }
