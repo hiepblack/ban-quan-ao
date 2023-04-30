@@ -23,7 +23,7 @@ const Products = ({ setToggleCart }) => {
   };
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/products/?page=${page+1}`).then(({ data }) => {
+    axios.get(`${BASE_URL}/products/?limit=9&page=${page+1}`).then(({ data }) => {
       setData(data.products.docs);
       setLoading(true);
       setPageCount(data.products.totalPages);
