@@ -1,11 +1,12 @@
 import React from 'react';
 import "./dashboard.css"
 import LineChart from '../chart/chart';
+import PieChart from '../chart/pieChart';
 const Dashboard = (props) => {
   return(
     <>
 	<div style={{marginBottom:"15px"}}>
-		<LineChart/>
+
 	</div>
 		<div class="content">
 			
@@ -52,6 +53,10 @@ const Dashboard = (props) => {
 					Số lượng Đơn hàng
 				</div>
 			</div>
+		</div>
+		<div className='chart'>
+			<LineChart/>
+			<PieChart/>
 		</div>
 	</>
   )

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import { getAllorder } from '../../api/order';
-const LineChart = () => {
+const PieChart = () => {
     const [orders,setorder] = useState([]);
     useEffect(()=>{
         getAllorder().then(({data})=>setorder(data.arr))
@@ -52,17 +52,14 @@ const LineChart = () => {
         ],
     };
     const options = {
-        scales: {
-            y: {
-                beginAtZero: true,
-            },
-        },
+        aspectRatio: 1,
+        maintainAspectRatio: true,
     };
   return (
     <div>
-      <Bar data={data} options={options} />
+      <Pie data={data} options={options} />
     </div>
   );
 }
 
-export default LineChart;
+export default PieChart;

@@ -74,7 +74,7 @@ const ProductDetailModel = () => {
         <div className="product__model__detail">
           <div className="product__model_img">
             <div className="product__model__main">
-              <img src={productDetail?.imgProduct} alt="" />
+              <img src={productDetail?.imgProduct?.[0]} alt="" />
             </div>
             <div className="product__model__price">
               <h1>{productDetail?.nameProduct?.toUpperCase()}</h1>
