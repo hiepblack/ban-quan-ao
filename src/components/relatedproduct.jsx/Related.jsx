@@ -10,7 +10,6 @@ import { BASE_URL } from "../../helper";
 
 const Related = ({ product }) => {
   const { user } = useContext(AuthContext);
-  console.log(user);
   const [show, setShow] = useState(true);
   const [dataRelateProduct, setDataRelateProduct] = useState([]);
   const [datacmt, setDataCmt] = useState({
@@ -26,7 +25,6 @@ const Related = ({ product }) => {
         const datafilter = data.products.docs.filter(
           (item) => item.categoryId._id === product.categoryId._id
         );
-        console.log(product.categoryId._id);
         let datafilterProducts = [];
         datafilter.forEach((item) => {
           if (item._id !== product._id) {

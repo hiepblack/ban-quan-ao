@@ -11,14 +11,16 @@ import { BASE_URL } from "../helper";
 const Home = () => {
   const [data, setData] = useState([]);
   const [blog, setBlog] = useState([]);
+  
   useEffect(() => {
     axios.get(`${BASE_URL}/products/?limit=10`).then(({ data }) => {
       setData(data.products.docs);
     });
-    axios.get(`${BASE_URL}/blog/`).then(({ data }) => {
-      setBlog(data.blogs);
+    axios.get(`${BASE_URL}/blog/?limit=6`).then(({ data }) => {
+      setBlog(data.blogs.docs);
     });
   }, []);
+
   window.addEventListener("scroll", function () {
       AOS.init({
         duration: 1200,

@@ -1,8 +1,5 @@
 import {
   MenuFoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
   MenuUnfoldOutlined ,
   MailOutlined,
   AppstoreOutlined,
@@ -10,9 +7,8 @@ import {
 
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import { getAll } from '../api/products';
 const { Header, Sider, Content } = Layout;
 const AdminLayout = () => {
 

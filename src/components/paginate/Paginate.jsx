@@ -9,7 +9,6 @@ const Paginate = ({ pageCount, page, setPage }) => {
           <li
             key={number}
             onClick={() => {
-              console.log(number);
               setPage(number);
             }}
             className={page === number ? "checked" : ""}

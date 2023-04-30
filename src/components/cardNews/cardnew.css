@@ -2,16 +2,17 @@
   width: 100%;
   padding: 1rem;
 }
-.cardNew__header  {
+.cardNew__header {
   overflow: hidden;
   border-radius: 0.5rem;
 }
 .cardNew__header img {
   width: 100%;
-    transition:all 0.7s ;
+  transition: all 0.7s;
 }
 .cardNew__body {
   width: 100%;
+  transition: all 0.3s;
 }
 .cardNew__body span {
   display: block;
@@ -32,6 +33,9 @@
   width: 100%;
   border-radius: 0.5rem;
   transform: scale(1.5);
+}
+.cardNew__body h4:hover {
+  color: #cccc;
 }
 
 @media screen and (max-width: 768px) {
