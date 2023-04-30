@@ -47,6 +47,7 @@ const PieChart = () => {
                     'rgba(255, 659, 64, 0.2)',
                     'rgba(255, 99, 132, 1)'
                 ],
+                
                 borderWidth: 1,
             },
         ],
