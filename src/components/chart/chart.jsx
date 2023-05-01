@@ -1,24 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
-import { getAllorder } from '../../api/order';
-const LineChart = () => {
+const LineChart = (props) => {
     const [orders,setorder] = useState([]);
     useEffect(()=>{
-        getAllorder().then(({data})=>setorder(data.arr))
-    },[])
-    const revenue =[]
-    for(let i = 0 ;i<orders?.length;i++){
-       revenue.push(orders[i].reduce((acc, val) => acc + val, 0))
-
-     }
-     console.log(revenue);
+        setorder(props.revenue)
+    },[props])
+    console.log(orders);
     const data = {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October','November','December'],
         datasets: [
             {
                 label: 'Doanh thu theo tháng',
-                data:revenue,
+                data:orders,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',

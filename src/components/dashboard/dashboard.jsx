@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./dashboard.css"
 import LineChart from '../chart/chart';
 import PieChart from '../chart/pieChart';
+import { getAllorder } from '../../api/order';
 const Dashboard = (props) => {
+    const [orders,setorder] = useState([]);
+    useEffect(()=>{
+        getAllorder().then(({data})=>setorder(data.arr))
+    },[])
+    const revenue =[]
+    for(let i = 0 ;i<orders?.length;i++){
+       revenue.push(orders[i].reduce((acc, val) => acc + val, 0))
+     }
+	  const date = new Date();
+	  const getMonth = date.getMonth();
+	  const sales = (revenue[getMonth]-revenue[getMonth-1])/revenue[getMonth-1]*100
+	  console.log(sales);
   return(
     <>
 	<div style={{marginBottom:"15px"}}>
@@ -53,9 +66,19 @@ const Dashboard = (props) => {
 					Số lượng Đơn hàng
 				</div>
 			</div>
+			<div class="info-box">
+				<div class="box-icon">
+				<span class="big">{revenue[getMonth]}$</span>
+					
+				</div>
+				
+				<div class="box-content">
+					<span >%{sales.toFixed()}%</span>
+				</div>
+			</div>
 		</div>
 		<div className='chart'>
-			<LineChart/>
+			<LineChart revenue={revenue}/>
 			<PieChart/>
 		</div>
 	</>
