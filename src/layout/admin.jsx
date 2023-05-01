@@ -10,6 +10,7 @@ import { Button, Layout, Menu, theme } from 'antd';
 import { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 const { Header, Sider, Content } = Layout;
+
 const AdminLayout = () => {
 
   function getItem(label, key, icon, children, type) {

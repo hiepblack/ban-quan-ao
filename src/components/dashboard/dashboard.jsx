@@ -2,6 +2,7 @@ import React from 'react';
 import "./dashboard.css"
 import LineChart from '../chart/chart';
 import PieChart from '../chart/pieChart';
+
 const Dashboard = (props) => {
   return(
     <>

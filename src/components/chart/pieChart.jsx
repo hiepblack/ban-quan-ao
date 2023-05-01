@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import { getAllorder } from '../../api/order';
+
 const PieChart = () => {
     const [orders,setorder] = useState([]);
     useEffect(()=>{
