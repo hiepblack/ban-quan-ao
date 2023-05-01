@@ -3,6 +3,7 @@ import "./dashboard.css"
 import LineChart from '../chart/chart';
 import PieChart from '../chart/pieChart';
 import { getAllorder } from '../../api/order';
+import {ArrowUpOutlined,ArrowDownOutlined} from  '@ant-design/icons';
 const Dashboard = (props) => {
     const [orders,setorder] = useState([]);
     useEffect(()=>{
@@ -73,7 +74,8 @@ const Dashboard = (props) => {
 				</div>
 				
 				<div class="box-content">
-					<span >%{sales.toFixed()}%</span>
+					{sales>0? <span style={{color:"green"}}> <ArrowUpOutlined /> {sales.toFixed()}%</span>: <span style={{color:"red"}}> <ArrowDownOutlined /> {sales.toFixed()}%</span>}
+					
 				</div>
 			</div>
 		</div>
