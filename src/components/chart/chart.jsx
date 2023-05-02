@@ -51,6 +51,8 @@ const LineChart = (props) => {
                 beginAtZero: true,
             },
         },
+        width: 50,
+        height: 50
     };
   return (
     <div>

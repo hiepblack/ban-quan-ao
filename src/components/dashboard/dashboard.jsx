@@ -75,13 +75,14 @@ const Dashboard = (props) => {
 				
 				<div class="box-content">
 					{sales>0? <span style={{color:"green"}}> <ArrowUpOutlined /> {sales.toFixed()}%</span>: <span style={{color:"red"}}> <ArrowDownOutlined /> {sales.toFixed()}%</span>}
-					
+					<div >Doanh thu</div>
 				</div>
 			</div>
+			
 		</div>
 		<div className='chart'>
-			<LineChart revenue={revenue}/>
-			<PieChart/>
+			<LineChart revenue={revenue} className='line_chart'/>
+			<PieChart className='line_chart'/>
 		</div>
 	</>
   )
