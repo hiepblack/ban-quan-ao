@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react';
 import "./dashboard.css"
 import LineChart from '../chart/chart';
 import PieChart from '../chart/pieChart';
+<<<<<<< HEAD
+
+=======
 import { getAllorder } from '../../api/order';
 import {ArrowUpOutlined,ArrowDownOutlined} from  '@ant-design/icons';
+>>>>>>> 279babe3a407b62bb3ad4649e5eab15f35256ae9
 const Dashboard = (props) => {
     const [orders,setorder] = useState([]);
     useEffect(()=>{

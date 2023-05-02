@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import { getAllorder } from '../../api/order';
+<<<<<<< HEAD
+
+=======
 import { getAllcate } from '../../api/cate';
+>>>>>>> 279babe3a407b62bb3ad4649e5eab15f35256ae9
 const PieChart = () => {
     const [cate,setcate] = useState([]);
     useEffect(()=>{

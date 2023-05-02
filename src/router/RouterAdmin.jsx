@@ -13,6 +13,7 @@ import UpdateCate from "../components/form/updateCate";
 import Dashboard from "../components/dashboard/dashboard";
 import { getAllod } from "../api/order";
 import { getAlluser } from "../api/user";
+
 const RouterAdmin = () => {
   const [products,setproducts] = useState([]);
   const [cates,setcates] = useState([]);
@@ -71,6 +72,7 @@ const RouterAdmin = () => {
     })
     message.success("Thành công")
   }
+  
   return (
     <Routes>
         <Route path="/"element={<AdminLayout/>}>
