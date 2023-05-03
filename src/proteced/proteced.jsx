@@ -10,7 +10,6 @@ const useAuth = () =>{
             const user = {loggeIn:true};
             return user&& user.loggeIn
         }else{
-            message.error("Bạn không có quyền truy cập")
             return user&& user.loggeIn
         }
     }

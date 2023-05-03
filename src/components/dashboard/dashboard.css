@@ -1,28 +1,30 @@
 .content{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap:10px
+    grid-template-columns: repeat(5, 1fr);
+    gap:10px;
+    margin-bottom: 3rem;
 }
 .info-box{
-    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-items: center;
+    justify-content: center;
+    
 }
 .info-box {
     background: white;
-    height: 100px;
     align-items: center;
-    justify-content: flex-start;
-    padding: 0 3em;
+    justify-content: center;
+    padding: 0.5rem 3em;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     border-radius: 5px;
-
     }
     .box-icon  svg{
-        display: block;
-        width: 48px;
-        height: 48px;
+        text-align: center;
+        width: 40px;
+        height: 40px;
 }   
     .box-content {
-        padding-left: 1.25em;
         white-space: nowrap;
     }
     .big {
@@ -30,6 +32,7 @@
         font-size: 2em;
         line-height: 150%;
         color: black;
+       
     }
 .chart{
     display: grid;
@@ -37,4 +40,9 @@
 }
 .line_chart{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.info-box:hover,
+.info-box:hover> div .big{
+    background-color: black;
+    color: white;
 }

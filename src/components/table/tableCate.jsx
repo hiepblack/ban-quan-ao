@@ -16,14 +16,19 @@ const TableCate = (props) => {
     },
     {
       title: 'Số Lượng sản phẩm',
-      dataIndex: 'age',
-      key: 'age',
+      dataIndex: 'products',
+          key: 'quantity',
+          render:(text)=>{
+          console.log(text)
+          return(text.length)
+         }
     },
     {
       title: 'Action',
       
       key: 'action',
       render: (_, record) => (
+        record.nameCategory==="Không xác định"?"":
         <Space size="middle">
           <Button onClick={()=>nextpage(record._id)}>Cập nhật</Button>
           <Button onClick={()=>onRemove(record._id)}>Xóa</Button>

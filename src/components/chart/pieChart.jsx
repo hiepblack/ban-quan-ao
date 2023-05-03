@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import { getAllorder } from '../../api/order';
-<<<<<<< HEAD
-
-=======
 import { getAllcate } from '../../api/cate';
->>>>>>> 279babe3a407b62bb3ad4649e5eab15f35256ae9
 const PieChart = () => {
     const [cate,setcate] = useState([]);
     useEffect(()=>{
@@ -14,12 +10,13 @@ const PieChart = () => {
     },[])
 
     const current = cate.map((item)=>item.nameCategory)
+    const quantity = cate.map((item)=>item.products.length)
     const data = {
         labels:current,
         datasets: [
             {
-                label: 'Danh mục',
-                data:[1,1,1],
+                label: 'Số lượng sản phẩm',
+                data:quantity,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
