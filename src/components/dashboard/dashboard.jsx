@@ -3,13 +3,8 @@ import "./dashboard.css"
 import LineChart from '../chart/chart';
 import PieChart from '../chart/pieChart';
 import { getAllorder } from '../../api/order';
-<<<<<<< HEAD
-import {ArrowUpOutlined,ArrowDownOutlined} from  '@ant-design/icons';
-
-=======
 import {ArrowUpOutlined,ArrowDownOutlined} from '@ant-design/icons'
 import { CiCoinInsert,CiCircleList,CiUser,CiShoppingCart,CiViewBoard } from "react-icons/ci";
->>>>>>> 503a6bb85b55544bbaa69fdc40c3b77d8e66d37f
 const Dashboard = (props) => {
     const [orders,setorder] = useState([]);
     useEffect(()=>{
