@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./hot_collect.css";
 import Title from "../title/Title";
 import CardCategory from "../cardCategory/CardCategory";
@@ -11,8 +11,14 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import 'swiper/css/navigation';
 import { Pagination, Autoplay, Navigation } from "swiper";
+import { getAllcate } from "../../api/cate";
 
 const Hot_Collect = () => {
+  const [cate,setcate]= useState([])
+  useEffect(()=>{
+    getAllcate().then(({data})=>setcate(data.cates))
+  },[])
+  const current = cate.filter((item)=>item.nameCategory!="Không xác định")
   return (
     <section className="container collect">
       <Title name={"BỘ SƯU TẬP HOT NHẤT 2022"} desc={'Chọn Các Sản Phẩm Phù Hợp Với Bạn'}/>
@@ -38,21 +44,14 @@ const Hot_Collect = () => {
         }}
         modules={[Pagination, Autoplay, Navigation]}
       >
-        <SwiperSlide>
-          <CardCategory />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardCategory />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardCategory />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardCategory />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CardCategory />
-        </SwiperSlide>
+        {current.map((item)=>{
+          return(
+            <SwiperSlide>
+              <CardCategory item={item}/>
+            </SwiperSlide>
+          )
+        })}
+        
       </Swiper>
     </section>
   );
