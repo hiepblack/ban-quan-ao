@@ -10,12 +10,13 @@ const PieChart = () => {
     },[])
 
     const current = cate.map((item)=>item.nameCategory)
+    const quantity = cate.map((item)=>item.products.length)
     const data = {
         labels:current,
         datasets: [
             {
-                label: 'Danh mục',
-                data:[1,1,1],
+                label: 'Số lượng sản phẩm',
+                data:quantity,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -53,8 +54,8 @@ const PieChart = () => {
         responsive: true,
         maintainAspectRatio: false,
         aspectRatio: 1,
-        width: 60,
-        height: 60
+        width: 50,
+        height: 50
 
     };
   return (
