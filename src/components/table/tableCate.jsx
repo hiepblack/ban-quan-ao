@@ -19,7 +19,6 @@ const TableCate = (props) => {
       dataIndex: 'products',
           key: 'quantity',
           render:(text)=>{
-          console.log(text)
           return(text.length)
          }
     },

@@ -65,7 +65,7 @@ const Header = () => {
     <header className="header">
       <nav className="nav">
         <Link to="#" className="nav__logo">
-          HaHiep
+          Store
         </Link>
 
         <div className={toggle ? "nav__menu show-menu" : "nav__menu"}>
