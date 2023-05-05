@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://banquanaobackend.onrender.com/';
+export const BASE_URL = 'https://banquanaobackend.onrender.com';
